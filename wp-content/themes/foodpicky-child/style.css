@@ -1,0 +1,72 @@
+/*
+Theme Name: Shundao's Theme'
+Theme URI: http://www.fyminds.com
+Author: Yong Qui Zheng
+Author URI: http://www.fyminds.com;
+Description: Multi purpose Theme.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: Multi-Vendor
+Text Domain: foodpick-child
+Template: foodpicky
+*/
+.shundao-vendor-list .entry-data{
+    display:inline !important;
+}
+.shundao-vendor-list .owl-carousel .owl-item{
+    width:300px !important;
+}
+.shundao-vendor-list .entry .entry-data .entry-header{
+    padding-left:15px;
+    padding-right:15px;
+}
+.shundao-vendor-list .entry .entry-data .entry-summary{
+    padding-left:15px;
+    padding-right:15px;
+}
+.shundao-vendor-list .entry .entry-data .entry-footer{
+    padding-left:15px;
+    padding-right:15px;
+}
+.shundao-vendor-list .entry .entry-data .entry-header .reviews .count{
+    margin-right:2px;
+}
+.shundao-vendor-list .entry-thumbnail{
+    display:inline !important;
+}
+.shundao-vendor-list .entry-thumbnail .image{
+    height:250px !important;
+}
+.static-header.homepage-header{
+    padding:80px 0 50px;
+}
+.shundao-vendor-list .entry-additions{
+    display:block !important;
+    width:100% !important;
+}
+.site-header{
+    background-image:none;
+    background-color:#FACCD2;
+}
+.site-header.scrolled .header-main{
+     background-color:#FACCD2;
+}
+.site-title{
+    position:relative;
+    bottom:12px;
+}
+.vendor-distance{
+    position:absolute;
+    bottom:520px;
+    font-size:10px;
+    padding:5px;
+    background-color:red;
+    color:#fff;
+    width:55px;
+    border-radius: 3px;
+}
+div.entry-footer span.address{
+    display: none !important;
+}
+

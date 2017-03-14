@@ -1,0 +1,14 @@
+@import "variables";
+@import "mixins"; 
+
+.wcv-form-table input, .wcv-form-table textarea { 
+	width: 50%;
+}
+
+.column-comments { 
+	width: 20%;
+}
+
+.column-order_id { 
+	width: 7%;
+}
