@@ -5,16 +5,9 @@
     var regex = /(\d+) ((\w+[ ,])+ ){2}([a-zA-Z]){2} (\d){5}/;
 
     jQuery('#billing_postcode_field').keypress(_.debounce(function(e){
-
-
+      //This is just used to show random value for demo.
       var cost = Number(Math.random() * 10 * .99).toFixed(2);
-      //alert("Zipcode hit");
-      jQuery('#deliveryCost').html("$" + cost);
-      //showAlert('testing');
-
-      getDistanceMatrix()
-
-
+      getDistanceMatrix();
     },500));
 
     jQuery('input#delivery_address').keypress( _.debounce( function(e){
@@ -42,18 +35,21 @@ function showAlert(msg){
 }
 
 function getDistanceMatrix(){
+  jQuery('#deliveryCost').html("about to get distance");
 
   var fromAddress = jQuery("#src_address").val();
-  var destAddress = jQuery("#billing_address_1_field").val() + ", " + jQuery("#billing_city_field").val() + ", " + jQuery("#billing_state option:selected").text(); 
+  var destAddress = jQuery("#billing_address_1_field").val() + ", " + 
+    jQuery("#billing_city_field").val() + ", " + jQuery("#billing_state option:selected").text() + ", " + jQuery("#billing_postcode_field"); 
   
-  var origin1 = new google.maps.LatLng(55.930385, -3.118425);
+  //use this a temp restaurant for now, can change to use the value of the currect restaurant
   var fogoDunwoody = '4671 Ashford Dunwoody Rd NE, Dunwoody, GA 30346';
-  var destinationA = 'Gainesville, FL';
-  var destinationB = new google.maps.LatLng(50.087692, 14.421150);
+  var sampleAddress = '820 Ralph McGill Blvd NE, Atlanta, GA 30306';
+  
+  jQuery('#deliveryCost').html("Dest address " + destAddress);
   //$("#rElement").html("from: " + fromAddress +", to:" + destAddress);
   var service = new google.maps.DistanceMatrixService();
-  service.getDistanceMatrix(
-    {
+  service.getDistanceMatrix (
+  {
     origins: [fogoDunwoody],
     destinations: [destAddress],
     travelMode: 'DRIVING',
@@ -66,22 +62,22 @@ function getDistanceMatrix(){
 
 
 function myCallback(response, status) {
+  jQuery("deliveryCost").html("Service return ");
   //jQuery("#pElement").html(response);
   if(status == 'OK') {
     //alert("distance" + response.rows[0].elements[0].distance.text);
     var dist = response.rows[0].elements[0].distance.text;
-    var costPerKm = .99;
+    var costPerMile = .99;
     var distVal = convertToValue(dist); 
-    var shippingCost = (distVal /1.6) * costPerKm ;
-    jQuery("deliveryCost").html("Distance: " + dist + ",Shipping cost $" + shippingCost);
+    var deliveryCost = (distVal /1.6) * costPerMile ;
+    jQuery("deliveryCost").html("$" + deliveryCost);
+    showAlert("get distance success");
 
   } else {
       jQuery("Invalid address");
       showAlert('Invalid address');
   }
 
-  // See Parsing the Results for
-  // the basics of a callback function.
 }
 
 function convertToValue(inputDistance) {
