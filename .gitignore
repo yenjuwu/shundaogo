@@ -1,3 +1,6 @@
+phpmyadmin/*
+*.DS_Store
+*.zip
 wp-admin/*
 wp-content/uploads/*
 nbproject/*
@@ -32,4 +35,4 @@ wp-content/plugins/all-in-one-wp-migration-multisite-extension/*
 wp-content/plugins/all-in-one-wp-migration/*
 license.txt
 readme.html
-
+wp-content/plugins/woothemes-updater/*
