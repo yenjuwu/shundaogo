@@ -8,6 +8,7 @@ wp-content/index.php
 wp-content/themes/twentyfifteen/*
 wp-content/themes/twentyseventeen/*
 wp-content/themes/twentysixteen/*
+wp-content/themes/foodpicky/*
 xmlrpc.php
 wp-trackback.php
 wp-signup.php
@@ -26,6 +27,9 @@ wp-blog-header.php
 wp-content/plugins/akismet/*
 wp-content/plugins/woocommerce/*
 wp-content/plugins/hello.php
+wp-content/ai1wm-backups/*
+wp-content/plugins/all-in-one-wp-migration-multisite-extension/*
+wp-content/plugins/all-in-one-wp-migration/*
 license.txt
 readme.html
 
