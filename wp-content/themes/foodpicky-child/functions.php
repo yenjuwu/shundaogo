@@ -19,19 +19,30 @@ function my_theme_enqueue_styles() {
 
 }
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
-add_action('wp_ajax_nopriv_add_delivery_cost','add_delivery_cost');
+
+
+add_action('wp_ajax_nopriv_add_delivery_cost','add_delivery_cost',10);
+add_action('wp_ajax_add_delivery_cost', 'add_delivery_cost', 10);
+
 function add_delivery_cost(){
-    global $woocommerce;
+        
    $delivery_cost =filter_input(INPUT_POST, 'delivery_cost',FILTER_VALIDATE_FLOAT);
    $cost = floatval($delivery_cost);
    if($cost!=0.0){
-       $cart=$woocommerce->cart;
-       $cart->add_fee(__('Delivery Charge','shundao'), $cost, false);
-       error_log(print_r($cart,true));
+        session_start();
+        $_SESSION['delivery_cost'] = $cost;
        // figure out how to add custom cost to wc
-       echo json_encode(array("status"=>1,"message"=>"Delivery Charge has been added"));
+       echo json_encode(array("status"=>1,"message"=>__("Delivery Charge has been added","shundao")));
    }else{
-       echo json_encode(array("status"=>0,"message"=>"There is an issue calculating your charge"));
+       echo json_encode(array("status"=>0,"message"=>__("There is an issue calculating your charge","shundao")));
    }
    die();
+}
+add_action('woocommerce_cart_calculate_fees', 'add_delivery_cost_from_session');
+
+function add_delivery_cost_from_session() {
+    session_start();
+    $delivery_cost = $_SESSION['delivery_cost'];
+    $shipping_label=__("Delivery Cost:","shundao");
+    WC()->cart->add_fee($shipping_label, $delivery_cost);
 }

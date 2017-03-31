@@ -53,9 +53,10 @@ function deliveryCostCallback(response, status) {
                         success:function(data,status){
                             if(status==="success" && data.status===1){
                                 // meaning that this is success
-                                console.log(data.message);
+                                jQuery("body").trigger("update_checkout");
+                                jQuery("#message-container").html(data.message);
                             }else{
-                                console.log(data.message);
+                                jQuery("#message-container").html(data.message);
                             }
                         }
                     });
