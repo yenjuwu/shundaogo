@@ -270,7 +270,7 @@ width: 50%;"
     <option value="<?php echo (number_format($sug1,2));?>"><?php echo "10% ($".(number_format($sug1,2)).")";?></option>
     <option value="<?php echo (number_format($sug2,2));?>"><?php echo "15% ($".(number_format($sug2,2)).")";?></option>
     <option value="<?php echo (number_format($sug4,2));?>"><?php echo "18% ($".(number_format($sug4,2)).")";?></option>
-    <option value="<?php echo (number_format($sug3,2));?>"><?php echo "20% ($".(number_format($sug2,2)).")";?></option>
+    <option value="<?php echo (number_format($sug3,2));?>"><?php echo "20% ($".(number_format($sug3,2)).")";?></option>
   </select>
 
 <script>		
