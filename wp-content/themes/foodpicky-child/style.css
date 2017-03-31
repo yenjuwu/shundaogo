@@ -69,6 +69,9 @@ Template: foodpicky
 div.entry-footer span.address{
     display: none !important;
 }
+input.processing{
+     background:url('img/spinner.gif') no-repeat right center !important;
+}
 input.error{
     box-shadow: 0 0 3px #CC0000 !important;
 }

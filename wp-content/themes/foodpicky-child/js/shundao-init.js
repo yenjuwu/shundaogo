@@ -8,6 +8,7 @@
         if((currentMatch = regex.exec(address)) !==null && currentMatch.length>0 ){
             // find a way to return vendor address
             jQuery(this).removeClass("error").addClass("success");
+            addDeliveryChargeProcessing();
             var vendorAddress=jQuery('input#vendor_address').val();
             getDistanceMatrix(address,vendorAddress);
         }else{
@@ -25,7 +26,27 @@
             jQuery(this).removeClass("success").addClass("error");
         }
     });
+    jQuery('input#delivery_address').on('change keyup copy paste cut', function() {
+        if(jQuery('input#delivery_address').val()===''){
+            removeAllVisualStatus();
+        }
+    });
 });
+function removeAllVisualStatus(){
+    jQuery('input#delivery_address').removeClass("success").removeClass("error");
+    removeDeliveryChargeProcessing();
+    jQuery("div#message-container").html("");
+}
+function addDeliveryChargeProcessing(){
+    if(!jQuery("input#delivery_address").hasClass("processing")){
+        jQuery("input#delivery_address").addClass("processing");
+    }
+}
+function removeDeliveryChargeProcessing(){
+        if(jQuery("input#delivery_address").hasClass("processing")){
+            jQuery("input#delivery_address").removeClass("processing");
+        }
+}
 
 function getDistanceMatrix(fromAddress, destAddress){
      
@@ -64,8 +85,10 @@ function deliveryCostCallback(response, status) {
                                 // meaning that this is success
                                 jQuery("body").trigger("update_checkout");
                                 jQuery("#message-container").html(data.message);
+                                removeDeliveryChargeProcessing();
                             }else{
                                 jQuery("#message-container").html(data.message);
+                                removeDeliveryChargeProcessing();
                             }
                         }
                     });
@@ -73,6 +96,7 @@ function deliveryCostCallback(response, status) {
 	}else{
             //there is an error
             messageContainer.html("There seems to be an issue calculating your delivery cost");
+            removeDeliveryChargeProcessing();
         }
 }
 
