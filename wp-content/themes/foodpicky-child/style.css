@@ -69,4 +69,10 @@ Template: foodpicky
 div.entry-footer span.address{
     display: none !important;
 }
+input.error{
+    box-shadow: 0 0 3px #CC0000 !important;
+}
+input.success{
+    box-shadow: 0 0 3px #7FFF7F !important;
+}
 
