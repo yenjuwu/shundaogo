@@ -2,6 +2,7 @@
 jQuery(document).ready(function () {
 
 	/////////////ADDED 3/30/2017/////////////////
+        /*
 	document.getElementsByClassName("woocommerce-billing-fields")[0].appendChild(document.getElementById("byconsolewooodt_checkout_field"))
 	document.getElementById("byconsolewooodt_delivery_type_field").innerHTML = '<label for="delivery_datetime" class="">Delivery Time & Date <abbr class="required" title="required">*</abbr></label>'
 	var monthNames = ["January", "February", "March", "April", "May", "June",
@@ -11,7 +12,8 @@ jQuery(document).ready(function () {
 	var dateString = monthNames[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
 	document.getElementById("byconsolewooodt_delivery_date").value = dateString;
 	jQuery('#byconsolewooodt_delivery_time').addClass('ui-timepicker-input');
-	////////////////////////////////////////////////////
+        */
+    ////////////////////////////////////////////////////
 
 		jQuery('input[name="byconsolewooodt_delivery_type"]').on('click',function(){
 
