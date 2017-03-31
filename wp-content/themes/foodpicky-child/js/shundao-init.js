@@ -1,10 +1,7 @@
 ;jQuery(document).ready(function(){
     //bind the keypress
     var regex = /(\d+) ((\w+[ ,])+ ){2}([a-zA-Z]){2} (\d){5}/;
-
-    jQuery('input#delivery_address').keypress( _.debounce( function(e){
-        //handleLoading(true);
-        
+    jQuery('input#delivery_address').keypress( _.debounce( function(e){        
         var address = e.currentTarget.value;
         if((currentMatch = regex.exec(address)) !==null && currentMatch.length>0 ){
             // find a way to return vendor address
@@ -12,10 +9,20 @@
             var vendorAddress=jQuery('input#vendor_address').val();
             getDistanceMatrix(address,vendorAddress);
         }else{
-            
             jQuery(this).removeClass("success").addClass("error");
         }
     }, 800 ) );
+    jQuery('input#delivery_address').bind("paste",function(e){
+        var address = e.originalEvent.clipboardData.getData('text');
+        if((currentMatch = regex.exec(address)) !==null && currentMatch.length>0 ){
+            // find a way to return vendor address
+            jQuery(this).removeClass("error").addClass("success");
+            var vendorAddress=jQuery('input#vendor_address').val();
+            getDistanceMatrix(address,vendorAddress);
+        }else{
+            jQuery(this).removeClass("success").addClass("error");
+        }
+    });
 });
 
 function getDistanceMatrix(fromAddress, destAddress){
