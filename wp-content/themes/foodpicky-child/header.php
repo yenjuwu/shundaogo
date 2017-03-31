@@ -103,7 +103,7 @@
                 <?php
                 global $post;
                 get_sidebar('middle');
-                echo azexo_build_vendor_info($post);
+                //echo azexo_build_vendor_info($post);
                 ?> 
            
             </header><!-- #masthead -->

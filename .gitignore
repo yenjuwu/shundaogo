@@ -1,6 +1,6 @@
 phpmyadmin/*
-*.DS_Store
-*.zip
+**.DS_Store
+**.zip
 wp-admin/*
 wp-content/uploads/*
 nbproject/*
