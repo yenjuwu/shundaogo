@@ -8,10 +8,12 @@
         var address = e.currentTarget.value;
         if((currentMatch = regex.exec(address)) !==null && currentMatch.length>0 ){
             // find a way to return vendor address
+            jQuery(this).removeClass("error").addClass("success");
             var vendorAddress=jQuery('input#vendor_address').val();
             getDistanceMatrix(address,vendorAddress);
         }else{
             
+            jQuery(this).removeClass("success").addClass("error");
         }
     }, 800 ) );
 });
@@ -40,8 +42,23 @@ function deliveryCostCallback(response, status) {
                     var costPerMile = 0.99;
                     var distVal = convertToValue(dist); 
                     var deliveryCost = distVal * costPerMile ;
-                    messageContainer.html("Distance: " + dist + ", Delivery cost $" + deliveryCost.toFixed(2));
+                    var costAfterFixed =deliveryCost.toFixed(2)
+                    messageContainer.html("Distance: " + dist + ", Delivery cost $" + costAfterFixed);
                     // if it isn't out of our zone. we need to add cost to the total
+                    jQuery.ajax({
+                        url:ajaxurl,
+                        method:"POST",
+                        dataType:"json",
+                        data:{'delivery_cost':costAfterFixed,'action':'add_delivery_cost'},
+                        success:function(data,status){
+                            if(status==="success" && data.status===1){
+                                // meaning that this is success
+                                console.log(data.message);
+                            }else{
+                                console.log(data.message);
+                            }
+                        }
+                    });
                 }
 	}else{
             //there is an error

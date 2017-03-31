@@ -19,24 +19,19 @@ function my_theme_enqueue_styles() {
 
 }
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
-
-//add google map api to the end
-
-//add hidden vendor address so we can calculate the delivery cost
-add_filter('woocommerce_form_field_hidden', 'wcds_form_field_hidden', 999, 4);
-
-function wcds_form_field_hidden($no_parameter, $key, $args, $value) {
-
-    $field = '<p class="test-me form-row ' . implode( ' ', $args['class'] ) .'" id="' . $key . '_field">
-        <input type="hidden" class="input-hidden" name="' . $key . '" id="' . $key . '" placeholder="' . $args['placeholder'] . '" value="'. $value.'" />
-        </p>' . $after;
-
-    return $field;
+add_action('wp_ajax_nopriv_add_delivery_cost','add_delivery_cost');
+function add_delivery_cost(){
+   $delivery_cost =filter_input(INPUT_POST, 'delivery_cost',FILTER_VALIDATE_FLOAT);
+   $cost = floatval($delivery_cost);
+   if($cost!=0.0){
+       $cart = WC()->cart;
+       $cart->calculate_fees();
+       $cart->add_fee(__('Delivery Charge','shundao'), $cost, false);
+       error_log(print_r($cart,true));
+       // figure out how to add custom cost to wc
+       echo json_encode(array("status"=>1,"message"=>"Delivery Charge has been added"));
+   }else{
+       echo json_encode(array("status"=>0,"message"=>"There is an issue calculating your charge"));
+   }
+   die();
 }
-
-
-function add_vc_profile_address($cart_item){
-    //var_dump($cart_item);
-}
-add_action('woocommerce_review_order_after_cart_contents', 'add_vc_profile_address');
-
