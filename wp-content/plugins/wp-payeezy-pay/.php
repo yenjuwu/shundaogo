@@ -1,1 +1,0 @@
-<?php $transaction_key = ""?>
