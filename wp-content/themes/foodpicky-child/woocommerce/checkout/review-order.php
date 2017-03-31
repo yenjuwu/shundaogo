@@ -57,21 +57,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</tbody>
 	<tfoot>
 		<tr class="cart-subtotal">
-			<th>Delivery Cost ($.99 Per Mile)</th>
-			<td id="deliveryCost">$3.99</td> 
-		</tr>
-
-		<tr class="cart-subtotal">
-		<th>Delivery Time</th>
-		<td>
-			<select name="deliveryWindow">
-				<?php foreach(getDeliveryTime() as $interval): ?>
-					<option> <?php echo esc_html($interval); ?> </option>
-				<?endforeach; ?>
-			</select>
-		</td>
-		</tr>
-		<tr class="cart-subtotal">
 			<th><?php _e( 'Subtotal', 'woocommerce' ); ?></th>
 			<td><?php wc_cart_totals_subtotal_html(); ?></td>
 		</tr>

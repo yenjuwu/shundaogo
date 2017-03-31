@@ -46,7 +46,3 @@ function floorFigure(figure, decimals){
     var d = Math.pow(10,decimals);
     return (parseInt(figure*d)/d).toFixed(decimals);
 };
-
-function tinsAwesomeFunction() {
-    return 'Tin is awesome';
-}
