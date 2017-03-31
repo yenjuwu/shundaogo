@@ -21,11 +21,11 @@ function my_theme_enqueue_styles() {
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
 add_action('wp_ajax_nopriv_add_delivery_cost','add_delivery_cost');
 function add_delivery_cost(){
+    global $woocommerce;
    $delivery_cost =filter_input(INPUT_POST, 'delivery_cost',FILTER_VALIDATE_FLOAT);
    $cost = floatval($delivery_cost);
    if($cost!=0.0){
-       $cart = WC()->cart;
-       $cart->calculate_fees();
+       $cart=$woocommerce->cart;
        $cart->add_fee(__('Delivery Charge','shundao'), $cost, false);
        error_log(print_r($cart,true));
        // figure out how to add custom cost to wc
