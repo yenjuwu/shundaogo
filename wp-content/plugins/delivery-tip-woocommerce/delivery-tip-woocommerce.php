@@ -302,7 +302,7 @@ function setTipValue(tipsug) {
 
 	<div class="clear"></div>
 	    <script type="text/javascript">
-    jQuery("deltip").resetForm();
+    $("deltip").resetForm();
     </script>
 	
 </form></div>
