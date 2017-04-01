@@ -76,7 +76,7 @@ function deliveryCostCallback(response, status) {
                     messageContainer.html("Distance: " + dist + ", Delivery cost $" + costAfterFixed);
                     // if it isn't out of our zone. we need to add cost to the total
                     jQuery.ajax({
-                        url:ajaxurl,
+                        url:woocommerce_params.ajax_url,
                         method:"POST",
                         dataType:"json",
                         data:{'delivery_cost':costAfterFixed,'action':'add_delivery_cost'},
