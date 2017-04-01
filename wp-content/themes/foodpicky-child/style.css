@@ -86,7 +86,6 @@ Template: foodpicky
 div.entry-footer span.address{
     display: none !important;
 }
-<<<<<<< Updated upstream
 input.processing{
      background:url('img/spinner.gif') no-repeat right center !important;
 }
@@ -96,6 +95,7 @@ input.error{
 input.success{
     box-shadow: 0 0 3px #7FFF7F !important;
 }
+tr.shipping{
+    display:none;
+}
 
-=======
->>>>>>> Stashed changes
