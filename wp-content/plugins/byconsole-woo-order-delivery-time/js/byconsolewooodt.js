@@ -1,19 +1,30 @@
 //synchornization of widget radior selection to caheout field radio selection
 jQuery(document).ready(function () {
 
-	/////////////ADDED 3/30/2017/////////////////
-        /*
-	document.getElementsByClassName("woocommerce-billing-fields")[0].appendChild(document.getElementById("byconsolewooodt_checkout_field"))
-	document.getElementById("byconsolewooodt_delivery_type_field").innerHTML = '<label for="delivery_datetime" class="">Delivery Time & Date <abbr class="required" title="required">*</abbr></label>'
-	var monthNames = ["January", "February", "March", "April", "May", "June",
-		"July", "August", "September", "October", "November", "December"
-	];
-	var date = new Date();
-	var dateString = monthNames[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
-	document.getElementById("byconsolewooodt_delivery_date").value = dateString;
-	jQuery('#byconsolewooodt_delivery_time').addClass('ui-timepicker-input');
-        */
-    ////////////////////////////////////////////////////
+        /////////////ADDED BY JAY 3/30/2017/////////////////
+	if((window.location.pathname).indexOf("cart") > 0){
+		jQuery('#byconsolewooodt_checkout_field').prepend('<label for="delivery_datetime" class="">Delivery Time & Date <abbr class="required" title="required">*</abbr></label>');
+
+		document.getElementsByClassName("woocommerce-billing-fields")[0].appendChild(document.getElementById("byconsolewooodt_checkout_field"));
+	  document.getElementById("byconsolewooodt_delivery_type_field").innerHTML = '';
+	  var monthNames = ["January", "February", "March", "April", "May", "June",
+	      "July", "August", "September", "October", "November", "December"
+	  ];
+	  var date = new Date();
+	  var datePlusHour = new Date(date);
+		var remainder = 15 - date.getMinutes() % 15;
+	  datePlusHour.setMinutes(date.getMinutes() + remainder + 45);
+	  var dateString = monthNames[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
+	  var time = datePlusHour.toLocaleString('en-US', { hour: 'numeric', minute:'numeric', hour12: true });
+	  document.getElementById("byconsolewooodt_delivery_date").value = dateString;
+	  document.getElementById("byconsolewooodt_delivery_time").value = time;
+		jQuery('#byconsolewooodt_delivery_time').timepicker({
+			'minTime': time,
+			'maxTime': '11:00pm'
+		});
+	  jQuery('#byconsolewooodt_delivery_time').addClass('ui-timepicker-input');
+	}
+	////////////////////////////////////////////////////
 
 		jQuery('input[name="byconsolewooodt_delivery_type"]').on('click',function(){
 
