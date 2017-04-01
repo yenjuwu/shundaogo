@@ -199,7 +199,7 @@ return array_merge( $deltip_plugin_links, $links );
 
 // enable delivery tip
 
-       add_action('woocommerce_after_checkout_billing_form', 'deltip_checkbox');
+       add_action('woocommerce_before_checkout_form', 'deltip_checkbox');
 
             function deltip_checkbox(){
                 global $woocommerce, $post, $wpdb;
@@ -301,9 +301,6 @@ function setTipValue(tipsug) {
 	</p>
 
 	<div class="clear"></div>
-	    <script type="text/javascript">
-    $("deltip").resetForm();
-    </script>
 	
 </form></div>
 

@@ -8,7 +8,9 @@ jQuery(document).ready(function () {
            if(jQuery('div').hasClass('woocommerce-billing-fields')){
              document.getElementsByClassName("woocommerce-billing-fields")[0].appendChild(document.getElementById("byconsolewooodt_checkout_field"));
            }
-           document.getElementById("byconsolewooodt_delivery_type_field").innerHTML = '';
+          if(jQuery('#byconsolewooodt_delivery_type_field').length){
+                document.getElementById("byconsolewooodt_delivery_type_field").innerHTML = "";
+            }
            var monthNames = ["January", "February", "March", "April", "May", "June",
                "July", "August", "September", "October", "November", "December"
            ];
