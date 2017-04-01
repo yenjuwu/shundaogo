@@ -39,6 +39,14 @@
             jQuery('.add_to_cart_button').replaceWith('<a class="button">Closed</a>');
           }
      }
+     
+     //handle restaurant
+     if(jQuery('.is-open').length){
+        if(jQuery('.is-open').text() === "Closed"){
+            jQuery('.single_add_to_cart_button').prop('disabled',true);
+            jQuery('.single_add_to_cart_button').text('Closed');
+       }
+    }
 });
 function removeAllVisualStatus(){
     jQuery('input#delivery_address').removeClass("success").removeClass("error");
