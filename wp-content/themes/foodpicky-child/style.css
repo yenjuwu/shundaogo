@@ -13,6 +13,7 @@ Template: foodpicky
 */
 
 /*Added 4/1/2017*/
+
 @media (min-width:480px){
   .list-profile{
     width: 100%
@@ -22,7 +23,7 @@ Template: foodpicky
     display: inline-block !important;
     margin-right: 10px;
   }
-  .entry-data{
+ div.list-profile div.azl_profile .entry-data{
     height: 190px;
   }
 }
