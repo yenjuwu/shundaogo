@@ -2,7 +2,7 @@
 jQuery(document).ready(function () {
 
         /////////////ADDED BY JAY 3/30/2017/////////////////
-	if((window.location.pathname).indexOf("cart") > 0){
+	if(((window.location.pathname).indexOf("cart") > 0) || ((window.location.pathname).indexOf("checkout") > 0)){
 		jQuery('#byconsolewooodt_checkout_field').prepend('<label for="delivery_datetime" class="">Delivery Time & Date <abbr class="required" title="required">*</abbr></label>');
 
 		document.getElementsByClassName("woocommerce-billing-fields")[0].appendChild(document.getElementById("byconsolewooodt_checkout_field"));
