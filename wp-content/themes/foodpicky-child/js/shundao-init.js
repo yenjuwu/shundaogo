@@ -31,6 +31,14 @@
             removeAllVisualStatus();
         }
     });
+    
+    // handle store close for product
+    for(var i = 0; i < jQuery('.is-open').length; i++){
+        if(jQuery('.is-open').eq(i).text() === 'Closed'){
+            jQuery('.add_to_cart_button').text('Closed');
+            jQuery('.add_to_cart_button').replaceWith('<a class="button">Closed</a>');
+          }
+     }
 });
 function removeAllVisualStatus(){
     jQuery('input#delivery_address').removeClass("success").removeClass("error");
