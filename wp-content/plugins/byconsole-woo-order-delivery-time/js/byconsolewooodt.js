@@ -20,7 +20,7 @@ jQuery(document).ready(function () {
            datePlusHour.setMinutes(date.getMinutes() + remainder + 45);
            var dateString = monthNames[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
            var time = datePlusHour.toLocaleString('en-US', { hour: 'numeric', minute:'numeric', hour12: true });
-           if(dateString !== null){
+           if(jQuery('#byconsolewooodt_delivery_date').length){
             document.getElementById("byconsolewooodt_delivery_date").value = dateString;
             document.getElementById("byconsolewooodt_delivery_time").value = time;
           }
