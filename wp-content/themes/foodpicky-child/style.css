@@ -11,6 +11,23 @@ Tags: Multi-Vendor
 Text Domain: foodpick-child
 Template: foodpicky
 */
+
+/*Added 4/1/2017*/
+@media (min-width:480px){
+  .list-profile{
+    width: 100%
+  }
+  .entry.list-profile{
+    width: 45%;
+    display: inline-block !important;
+    margin-right: 10px;
+  }
+  .entry-data{
+    height: 190px;
+  }
+}
+/*END*/
+
 .shundao-vendor-list .entry-data{
     display:inline !important;
 }
@@ -69,6 +86,7 @@ Template: foodpicky
 div.entry-footer span.address{
     display: none !important;
 }
+<<<<<<< Updated upstream
 input.processing{
      background:url('img/spinner.gif') no-repeat right center !important;
 }
@@ -79,3 +97,5 @@ input.success{
     box-shadow: 0 0 3px #7FFF7F !important;
 }
 
+=======
+>>>>>>> Stashed changes
