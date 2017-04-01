@@ -239,7 +239,7 @@ width: 50%;"
   
   
   <?php global $woocommerce;?>   
-  <h4>Tips Guide</h2>
+  <h4><?php echo _e("Tips Guide","deliverytip"); ?></h2>
   
   <?php $sug1 = $woocommerce->cart->cart_contents_total * 0.10;?>
   <?php $sug2 = $woocommerce->cart->cart_contents_total * 0.15;?>
