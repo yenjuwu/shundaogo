@@ -20,8 +20,10 @@ jQuery(document).ready(function () {
            datePlusHour.setMinutes(date.getMinutes() + remainder + 45);
            var dateString = monthNames[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
            var time = datePlusHour.toLocaleString('en-US', { hour: 'numeric', minute:'numeric', hour12: true });
-           document.getElementById("byconsolewooodt_delivery_date").value = dateString;
-           document.getElementById("byconsolewooodt_delivery_time").value = time;
+           if(dateString !== null){
+            document.getElementById("byconsolewooodt_delivery_date").value = dateString;
+            document.getElementById("byconsolewooodt_delivery_time").value = time;
+          }
            jQuery('#byconsolewooodt_delivery_time').timepicker({
              'minTime': time,
              'maxTime': '11:00pm'

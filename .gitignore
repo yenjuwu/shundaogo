@@ -9,6 +9,7 @@ nbproject/*
 .htaccess
 index.php
 wp-content/languages/*
+wp-content/themes/foodpicky/*
 wp-content/index.php
 wp-content/themes/twentyfifteen/*
 wp-content/themes/twentyseventeen/*

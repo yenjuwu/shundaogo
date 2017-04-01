@@ -108,7 +108,7 @@ tr.shipping{
     margin-top: 5px;
     border-radius: 5px;
 }
-.is-open{
+.open-now{
     border: 2px solid #00cc66;
     width: 30%;
     text-align: center;
