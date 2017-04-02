@@ -185,6 +185,7 @@ div.do-not-show{
 
 #alert {
     position: relative;
+    z-index:1000;
 }
 #alert:hover:after {
     background: hsla(0,0%,0%,.8);
