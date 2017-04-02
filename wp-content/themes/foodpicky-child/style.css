@@ -261,6 +261,11 @@ div.do-not-show{
             animation: alert 1s ease forwards;
 }
 
+nav.primary-navigation ul.nav-menu:not(.vc) > li.menu-item > a.menu-link, nav.primary-navigation ul.sub-menu:not(.vc) > li.menu-item > a.menu-link
+{
+    font-size: 15px !important;
+}
+
 /* Animation */
 
 @-webkit-keyframes alert {
