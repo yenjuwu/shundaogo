@@ -289,6 +289,7 @@ jQuery(document).ready(function(){
 <?php 
 					 
  //stick to the session and check erros
+/*
 if($_SESSION['value_deltip']) {
   $_SESSION['value_deltip'] = $_POST['value_deltip'];
 }
@@ -353,7 +354,8 @@ if ( $options['enable_deltip'] == '1' ) {
   $woocommerce->cart->add_fee( $tip_name, $del_tip, false, '' );
   
 }}}
-
+*/
+ }}
 
 
 
