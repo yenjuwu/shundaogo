@@ -75,13 +75,13 @@ function add_fee_cost_from_session() {
 
 //Order only from 1 shop 
 //https://www.wcvendors.com/help/topic/restrict-clientbuyer-to-order-from-one-vendor-at-a-time/
-add_filter( 'woocommerce_add_cart_item_data', 'woo_custom_add_to_cart' );
+//add_filter( 'woocommerce_add_cart_item_data', 'woo_custom_add_to_cart' );
 function woo_custom_add_to_cart( $cart_item_data ) {
     global $woocommerce;
     $items = $woocommerce->cart->get_cart(); //getting cart items
     $_product = array();
     foreach($items as $item => $values) {
-    $_product[] = $values['data']->post;
+        $_product[] = $values['data']->post;
     }
     if(isset($_product[0]->ID)){ //getting first item from cart
         $product_in_cart_vendor_id = get_post_field( 'post_author', $_product[0]->ID);
@@ -89,10 +89,39 @@ function woo_custom_add_to_cart( $cart_item_data ) {
         $product_added_vendor_id = get_post_field( 'post_author', $prodId );
 
         if( $product_in_cart_vendor_id !== $product_added_vendor_id ){
-            //$woocommerce->cart->empty_cart();
+            //$woocommerce->cart->empty_cart(); 
+            
             wc_add_notice(  __("You can only order items from 1 shop !", "shundao"));}
             return null;
             //return $cart_item_data; 
     } 
 } 
+add_filter('woocommerce_add_to_cart_product_id','shundao_add_to_cart');
+function shundao_add_to_cart($pid){
+    global $woocommerce;
+    $cart = $woocommerce->cart;
+    if($cart->is_empty()){
+        // if cart is empty we don't need to do any check at all
+        return $pid;
+    }else{
+        // grab all cart id
+        $items = $cart->get_cart();
+        $_product = array();
+        foreach($items as $item => $values) {
+            $_product[] = $values['data']->post;
+        }
+        if(isset($_product[0]->ID)){ //getting first item from cart
+            $product_in_cart_vendor_id = get_post_field( 'post_author', $_product[0]->ID);
+            $product_added_vendor_id = get_post_field( 'post_author', $pid );
+
+            if( $product_in_cart_vendor_id !== $product_added_vendor_id ){
+                //$woocommerce->cart->empty_cart(); 
+                wc_add_notice(  __("You can only order items from 1 shop !", "shundao"));
+                return 0;
+            }
+        } 
+        return $pid;
+    }
+}
+
 
