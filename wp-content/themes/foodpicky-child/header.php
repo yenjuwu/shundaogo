@@ -22,7 +22,7 @@
         <div id="preloader"><div id="status"></div></div>
         <?php if(isset($_SESSION['sd_error'])){?>
             <div id="alert">
-            <a class="alert" href="#alert"><?php echo $_SESSION['sd_error']; ?></a>
+            <a class="alert" href="#alert"><?php echo __("you cannot order from multiple restaurants", "shundao"); ?></a>
         </div>
         <?php
             //kill the error to only show once

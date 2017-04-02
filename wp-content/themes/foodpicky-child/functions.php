@@ -92,7 +92,6 @@ function shundao_add_to_cart($pid){
                 //$woocommerce->cart->empty_cart(); 
                 session_start();
                 $_SESSION['sd_error']=__("you cannot order from multiple restaurants", "shundao");
-                wc_add_notice(  __("you cannot order from multiple restaurants", "shundao"));
                 return null;
             }
         } 

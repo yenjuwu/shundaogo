@@ -12,6 +12,7 @@ Plugin URI: http://plugins.brazilloops.com/
 Description: Add user amount/percentage "tip" at checkout. After activation, please go to Settings -> Delivery Tip and fill the form to show how it will appear at checkout page.
 
 Version: 1.0
+Text Domain: deliverytip
 
 Author: Eduardo Sallada
 
