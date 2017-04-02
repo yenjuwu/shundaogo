@@ -114,6 +114,8 @@ function shundao_add_to_cart($pid){
 
             if( $product_in_cart_vendor_id !== $product_added_vendor_id ){
                 //$woocommerce->cart->empty_cart(); 
+                session_start();
+                $_SESSION['sd_error']=__("You can only order items from 1 shop !", "shundao");
                 wc_add_notice(  __("You can only order items from 1 shop !", "shundao"));
                 return null;
             }

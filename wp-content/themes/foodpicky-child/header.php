@@ -20,6 +20,16 @@
 
     <body <?php body_class(); ?>>        
         <div id="preloader"><div id="status"></div></div>
+        <?php if(isset($_SESSION['sd_error'])){?>
+            <div id="alert">
+            <a class="alert" href="#alert"><?php echo $_SESSION['sd_error']; ?></a>
+        </div>
+        <?php
+            //kill the error to only show once
+            unset($_SESSION['sd_error']);
+            } 
+           
+        ?>
         <div id="page" class="hfeed site">
             <header id="masthead" class="site-header clearfix">
                 <?php
