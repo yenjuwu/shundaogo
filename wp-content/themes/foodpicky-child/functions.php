@@ -84,11 +84,15 @@ function woo_custom_add_to_cart( $cart_item_data ) {
     $_product[] = $values['data']->post;
     }
     if(isset($_product[0]->ID)){ //getting first item from cart
-    $product_in_cart_vendor_id = get_post_field( 'post_author', $_product[0]->ID);
-    $prodId = (int) apply_filters( 'woocommerce_add_to_cart_product_id', $_GET['add-to-cart'] );
-    $product_added_vendor_id = get_post_field( 'post_author', $prodId );
+        $product_in_cart_vendor_id = get_post_field( 'post_author', $_product[0]->ID);
+        $prodId = (int) apply_filters( 'woocommerce_add_to_cart_product_id', $_GET['add-to-cart'] );
+        $product_added_vendor_id = get_post_field( 'post_author', $prodId );
 
-    if( $product_in_cart_vendor_id !== $product_added_vendor_id ){$woocommerce->cart->empty_cart();wc_add_notice(  __("You can only order items from 1 shop !", "wcvendors"));}
-    return $cart_item_data; } 
+        if( $product_in_cart_vendor_id !== $product_added_vendor_id ){
+            //$woocommerce->cart->empty_cart();
+            wc_add_notice(  __("You can only order items from 1 shop !", "shundao"));}
+            return null;
+            //return $cart_item_data; 
+    } 
 } 
 
