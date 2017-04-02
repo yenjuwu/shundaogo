@@ -20,10 +20,10 @@ msgid "Failed to add tip"
 msgstr "加入小费出现问题"
 
 msgid "Delivery Charge has been added"
-msgstr "外送费以加入"
+msgstr "外送费已加入"
 
 msgid "There is an issue calculating your charge"
-msgstr "发现问题加入你的送餐费用"
+msgstr "费用计算出问题"
 
 msgid "Delivery Cost:"
 msgstr "送餐费"
@@ -32,4 +32,4 @@ msgid "Tip"
 msgstr "小费"
 
 msgid "you can't order from multiple restaurants"
-msgstr "你只能在同一家餐厅消费"
+msgstr "对不起， 现在我们只支持单家餐馆订餐"
