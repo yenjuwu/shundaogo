@@ -199,7 +199,7 @@ return array_merge( $deltip_plugin_links, $links );
 
 // enable delivery tip
 
-       add_action('woocommerce_before_checkout_form', 'deltip_checkbox');
+       add_action('woocommerce_after_checkout_billing_form', 'deltip_checkbox');
 
             function deltip_checkbox(){
                 global $woocommerce, $post, $wpdb;
@@ -233,76 +233,60 @@ text-align: left;
 border-radius: 5px;"
 >
   
-<form action="" method="post">  
-<center class= "tip-ex">
-  
-  
+<form id="tip_form" action="" method="post">  
   <?php global $woocommerce;?>   
-  <h4><?php echo _e("Tips Guide","deliverytip"); ?></h2>
+  <h4><?php echo _e("Tips Guide","deliverytip"); ?><div class="spinner"></div></h4>
   
   <?php $sug1 = $woocommerce->cart->cart_contents_total * 0.10;?>
   <?php $sug2 = $woocommerce->cart->cart_contents_total * 0.15;?>
-  <?php $sug3 = $woocommerce->cart->cart_contents_total * 0.20;?> 
-  <?php $sug4 = $woocommerce->cart->cart_contents_total * 0.18;?>
-
-  <!--
-  <input type="radio" name="tipsug" onclick="setTipValue(this.value)" value="<?php echo (number_format($sug1,2));?>">
-  <?php echo "10% ($".(number_format($sug1,2)).")";?><br>
-  
-  
-  <input type="radio" name="tipsug" onclick="setTipValue(this.value)" value="<?php echo (number_format($sug2,2));?>">
-  <?php echo "15% ($".(number_format($sug2,2)).")";?> <br>
-  
- 
-  <input type="radio" name="tipsug" onclick="setTipValue(this.value)" value= "<?php echo (number_format($sug3,2));?>">  
-  <?php echo "20% ($". (number_format($sug3,2)).")";?> <br>
-  
-  <input type="radio" name="tipsug" onclick="setTipValue(this.value)" value="cash"> <br>
-  <?php echo " CASH";?>  
-
-  -->
-
-
-
-  <select onchange="setTipValue(this.value)">
-    <option value="0">Select</option>
-    <option value="<?php echo (number_format($sug1,2));?>"><?php echo "10% ($".(number_format($sug1,2)).")";?></option>
-    <option value="<?php echo (number_format($sug2,2));?>"><?php echo "15% ($".(number_format($sug2,2)).")";?></option>
-    <option value="<?php echo (number_format($sug4,2));?>"><?php echo "18% ($".(number_format($sug4,2)).")";?></option>
-    <option value="<?php echo (number_format($sug3,2));?>"><?php echo "20% ($".(number_format($sug3,2)).")";?></option>
-  </select>
-
+  <?php $sug3 = $woocommerce->cart->cart_contents_total * 0.18;?>
+  <?php $sug4 = $woocommerce->cart->cart_contents_total * 0.20;?> 
+  <div class="tip-radio-container">
+    <p class="tip-message do-not-show"></p>
+    <input onclick="setTipValue(this.value)" type="radio" id="radio1" name="radios" value="<?php echo (number_format($sug1,2));?>">
+    <label for="radio1"><?php echo "10% ($".(number_format($sug1,2)).")";?></label>
+    <input onclick="setTipValue(this.value)" type="radio" id="radio2" name="radios" value="<?php echo (number_format($sug2,2));?>">
+    <label for="radio2"><?php echo "15% ($".(number_format($sug2,2)).")";?></label>
+    <input onclick="setTipValue(this.value)" type="radio" id="radio3" name="radios" value="<?php echo (number_format($sug3,2));?>">
+    <label for="radio3"><?php echo "18% ($".(number_format($sug3,2)).")";?></label>
+    <input onclick="setTipValue(this.value)" type="radio" id="radio4" name="radios" value="<?php echo (number_format($sug4,2));?>">
+    <label for="radio4"><?php echo "20% ($".(number_format($sug4,2)).")";?></label>
+    <div style="margin-top:10px;" class="tip-control">
+        <input type="submit"class="button" id="submit_deltip" name="apply_amount" value="<?php echo $options['button'];?>">
+        <input style="line-height:1.5em;text-align: center;width:35%;" type="text" 
+        name="value_deltip" class="input-text-deltip" 
+        placeholder="<?php echo $options['tip_holder']; ?>" 
+        id="value_deltip" value="">
+    </div>
+  </div>  
 <script>		
 function setTipValue(tipsug) {
     document.getElementById("value_deltip").value = tipsug;
 }
-  
-  
-</script>
-  
-  </center>
-  
-	
-	  Amount: <input style="line-height:1.5em;text-align: center;width: 47%;" type="text" 
-    name="value_deltip" class="input-text-deltip" 
-    placeholder="<?php echo $options['tip_holder']; ?>" 
-    id="value_deltip" value="">
-   
+jQuery(document).ready(function(){
+        jQuery("#submit_deltip").click(function(e){
+            e.preventDefault();
+            jQuery(".spinner").show();
+            jQuery.ajax({
+                url:woocommerce_params.ajax_url,
+                method:"POST",
+                dataType:"json",
+                data:{'tip':jQuery("#value_deltip").val(),'action':'add_tip_cost'},
+                success:function(data,status){
+                    if(status==="success" && data.status===1){
+                        jQuery("body").trigger("update_checkout");
+                    }
+                    jQuery(".spinner").hide();
 
-    <!-- 
-  value for entry box (original)
-   <?php echo $_POST['value_deltip']; ?>
-    -->
- 
-	<p class="form-row form-row-last" style="float:left;width: 59%;margin-top: 15px;">
-	  
-		<input type="submit"  class="button" id="submit_deltip" name="apply_amount" value="<?php echo $options['button'];?>">
-        
-	</p>
+                    jQuery("p.tip-message").html(data.message);
+                }
+            });
 
-	<div class="clear"></div>
-	
-</form></div>
+        });
+});
+</script>    
+</form>
+</div>
 
 
 
