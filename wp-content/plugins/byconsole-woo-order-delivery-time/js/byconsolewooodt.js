@@ -5,9 +5,9 @@ jQuery(document).ready(function () {
 	if(((window.location.pathname).indexOf("cart") > 0) || ((window.location.pathname).indexOf("checkout") > 0)){
             jQuery('#byconsolewooodt_checkout_field').prepend('<label for="delivery_datetime" class="">Delivery Time & Date <abbr class="required" title="required">*</abbr></label>');
 
-           if(jQuery('div').hasClass('woocommerce-billing-fields')){
-             document.getElementsByClassName("woocommerce-billing-fields")[0].appendChild(document.getElementById("byconsolewooodt_checkout_field"));
-           }
+           if(jQuery('div').hasClass('woocommerce-shipping-fields')){
+                document.getElementsByClassName("woocommerce-shipping-fields")[0].appendChild(document.getElementById("byconsolewooodt_checkout_field"));
+              }
           if(jQuery('#byconsolewooodt_delivery_type_field').length){
                 document.getElementById("byconsolewooodt_delivery_type_field").innerHTML = "";
             }
