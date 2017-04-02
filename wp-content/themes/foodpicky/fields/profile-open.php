@@ -14,7 +14,7 @@ if($post->post_type =="product"){
        $author_id = $post->post_author;
        $get_vendor_filter = array('post_type'=>'azl_profile','author__in'=>array($author_id));
        $vendor = get_posts($get_vendor_filter);
-       $postId =$vendor->ID;
+       $postId =$vendor[0]->ID;
 }else{
     $postId = $post->ID;
 }
