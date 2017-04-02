@@ -1,0 +1,36 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-02 20:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/"
+
+msgid "Tip has been added"
+msgstr ""
+
+msgid "Failed to add tip"
+msgstr ""
+
+msgid "Delivery Charge has been added"
+msgstr ""
+
+msgid "There is an issue calculating your charge"
+msgstr ""
+
+msgid "Delivery Cost:"
+msgstr ""
+
+msgid "Tip"
+msgstr ""
+
+msgid "You can only order items from 1 shop !"
+msgstr ""

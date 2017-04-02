@@ -1,0 +1,35 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Shundao's Theme'\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-02 21:03+0000\n"
+"PO-Revision-Date: 2017-04-02 21:06+0000\n"
+"Last-Translator: admin <yong.zheng@fyminds.com>\n"
+"Language-Team: Chinese (Taiwan)\n"
+"Language: zh-TW\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco - https://localise.biz/"
+
+msgid "Tip has been added"
+msgstr "小费被加入"
+
+msgid "Failed to add tip"
+msgstr "加入小费出现问题"
+
+msgid "Delivery Charge has been added"
+msgstr "外送费以加入"
+
+msgid "There is an issue calculating your charge"
+msgstr "发现问题加入你的送餐费用"
+
+msgid "Delivery Cost:"
+msgstr "送餐费"
+
+msgid "Tip"
+msgstr "小费"
+
+msgid "you cann't order from multiple restaurants"
+msgstr "你只能在同一家餐厅消费"

@@ -2,7 +2,6 @@
 /**
  * Shundao functions and definitions.
  */
-/* Dash child theme functions */
 function my_theme_enqueue_styles() {
 
     $parent_style = 'parent-style';
@@ -72,29 +71,6 @@ function add_fee_cost_from_session() {
     }
 }
 
-
-//Order only from 1 shop 
-//https://www.wcvendors.com/help/topic/restrict-clientbuyer-to-order-from-one-vendor-at-a-time/
-//add_filter( 'woocommerce_add_cart_item_data', 'woo_custom_add_to_cart' );
-function woo_custom_add_to_cart( $cart_item_data,$pid ) {
-    global $woocommerce;
-    $items = $woocommerce->cart->get_cart(); //getting cart items
-    $_product = array();
-    foreach($items as $item => $values) {
-        $_product[] = $values['data']->post;
-    }
-    if(isset($_product[0]->ID)){ //getting first item from cart
-        $product_in_cart_vendor_id = get_post_field( 'post_author', $_product[0]->ID);
-        $prodId = (int) apply_filters( 'woocommerce_add_to_cart_product_id', $_GET['add-to-cart'] );
-        $product_added_vendor_id = get_post_field( 'post_author', $prodId );
-        if( $product_in_cart_vendor_id !== $product_added_vendor_id ){
-            $woocommerce->cart->empty_cart(); 
-            wc_add_notice(  __("You can only order items from 1 shop !", "shundao"));
-            return null;
-        }
-        return $cart_item_data; 
-    } 
-} 
 add_filter('woocommerce_add_to_cart_product_id','shundao_add_to_cart');
 function shundao_add_to_cart($pid){
     global $woocommerce;
@@ -115,8 +91,8 @@ function shundao_add_to_cart($pid){
             if( $product_in_cart_vendor_id !== $product_added_vendor_id ){
                 //$woocommerce->cart->empty_cart(); 
                 session_start();
-                $_SESSION['sd_error']=__("You can only order items from 1 shop !", "shundao");
-                wc_add_notice(  __("You can only order items from 1 shop !", "shundao"));
+                $_SESSION['sd_error']=__("you can't order from multiple restaurants", "shundao");
+                wc_add_notice(  __("you can't order from multiple restaurants", "shundao"));
                 return null;
             }
         } 
