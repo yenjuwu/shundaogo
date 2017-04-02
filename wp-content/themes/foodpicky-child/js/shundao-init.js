@@ -47,6 +47,36 @@
             jQuery('.single_add_to_cart_button').text('Closed');
        }
     }
+    //search
+    if(jQuery('div').hasClass('geo-location')){
+ jQuery('.geo-location').find('input[name="location"]').keyup(function() {
+   var address;
+   if(jQuery('.geo-location').find('input[name="location"]').val().toLowerCase().indexOf('ga') > 0){
+     address = jQuery('.geo-location').find('input[name="location"]').val();
+   }
+   else{
+     address = jQuery('.geo-location').find('input[name="location"]').val() + ' GA';
+   }
+   jQuery.ajax({
+       type: "GET",
+       dataType: "json",
+       url: "http://maps.googleapis.com/maps/api/geocode/json",
+       data: {'address': address,'sensor':false},
+       success: function(data){
+           if(data.results.length){
+               jQuery('.geo-location').find('input[name="location"]').val(jQuery('.geo-location').find('input[name="location"]').val());
+               jQuery('.geo-location').find('input[name="latitude"]').val(data.results[0].geometry.location.lat);
+               jQuery('.geo-location').find('input[name="longitude"]').val(data.results[0].geometry.location.lng);
+           } else{
+             jQuery('#latitude').val('invalid address');
+             jQuery('#longitude').val('invalid address');
+             console.log(jQuery('#latitude').val('invalid address'));
+             console.log(jQuery('#longitude').val('invalid address'));
+          }
+       }
+   });
+ });
+}
 
     //move tip container
     /*

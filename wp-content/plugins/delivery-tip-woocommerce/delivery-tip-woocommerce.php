@@ -199,7 +199,7 @@ return array_merge( $deltip_plugin_links, $links );
 
 // enable delivery tip
 
-       add_action('woocommerce_after_checkout_billing_form', 'deltip_checkbox');
+       add_action('woocommerce_after_order_notes', 'deltip_checkbox');
 
             function deltip_checkbox(){
                 global $woocommerce, $post, $wpdb;
@@ -210,9 +210,6 @@ return array_merge( $deltip_plugin_links, $links );
 // Form at checkout page
 
 ?>
-
-
-
 
 <div class="delivery-tip-woocommerce">
 
@@ -233,7 +230,6 @@ text-align: left;
 border-radius: 5px;"
 >
   
-<form id="tip_form" action="" method="post">  
   <?php global $woocommerce;?>   
   <h4><?php echo _e("Tips Guide","deliverytip"); ?><div class="spinner"></div></h4>
   
@@ -252,11 +248,12 @@ border-radius: 5px;"
     <input onclick="setTipValue(this.value)" type="radio" id="radio4" name="radios" value="<?php echo (number_format($sug4,2));?>">
     <label for="radio4"><?php echo "20% ($".(number_format($sug4,2)).")";?></label>
     <div style="margin-top:10px;" class="tip-control">
-        <input type="submit"class="button" id="submit_deltip" name="apply_amount" value="<?php echo $options['button'];?>">
-        <input style="line-height:1.5em;text-align: center;width:35%;" type="text" 
+        <input style="line-height:1.5em;text-align: center;width:35%;display:inline-block" type="text" 
         name="value_deltip" class="input-text-deltip" 
         placeholder="<?php echo $options['tip_holder']; ?>" 
         id="value_deltip" value="">
+        <a href="" class="button" id="submit_deltip"  ><?php echo $options['button'];?></a>
+
     </div>
   </div>  
 <script>		
@@ -285,7 +282,6 @@ jQuery(document).ready(function(){
         });
 });
 </script>    
-</form>
 </div>
 
 
