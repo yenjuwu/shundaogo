@@ -31,5 +31,5 @@ msgstr "送餐费"
 msgid "Tip"
 msgstr "小费"
 
-msgid "you can't order from multiple restaurants"
+msgid "you cannot order from multiple restaurants"
 msgstr "对不起， 现在我们只支持单家餐馆订餐"

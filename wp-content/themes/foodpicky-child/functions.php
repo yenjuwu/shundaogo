@@ -91,8 +91,8 @@ function shundao_add_to_cart($pid){
             if( $product_in_cart_vendor_id !== $product_added_vendor_id ){
                 //$woocommerce->cart->empty_cart(); 
                 session_start();
-                $_SESSION['sd_error']=__("you can't order from multiple restaurants", "shundao");
-                wc_add_notice(  __("you can't order from multiple restaurants", "shundao"));
+                $_SESSION['sd_error']=__("you cannot order from multiple restaurants", "shundao");
+                wc_add_notice(  __("you cannot order from multiple restaurants", "shundao"));
                 return null;
             }
         } 
