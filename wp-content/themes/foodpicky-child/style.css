@@ -19,7 +19,7 @@ Template: foodpicky
     width: 100%
   }
   .entry.list-profile{
-    width: 45%;
+    width: 30%;
     display: inline-block !important;
     margin-right: 10px;
   }
