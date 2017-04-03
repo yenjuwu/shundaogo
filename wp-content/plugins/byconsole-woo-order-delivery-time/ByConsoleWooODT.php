@@ -352,7 +352,7 @@ function byconsolewooodt_checkout_field( $checkout ) {
 								),
 
         ), $checkout->get_value( 'byconsolewooodt_delivery_type' ));
-
+        /*
 	woocommerce_form_field( 'byconsolewooodt_delivery_date', array(
 
         'type'          => 'text',
@@ -365,6 +365,8 @@ function byconsolewooodt_checkout_field( $checkout ) {
 		'default'		=> $byconsolewooodt_delivery_widget_cookie_array['byconsolewooodt_widget_date_field'],
 
         ), $checkout->get_value( 'byconsolewooodt_delivery_date' ));
+         * 
+         */
 
 	woocommerce_form_field( 'byconsolewooodt_delivery_time', array(
 
