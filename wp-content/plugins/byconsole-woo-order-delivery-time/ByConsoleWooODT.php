@@ -357,7 +357,7 @@ function byconsolewooodt_checkout_field( $checkout ) {
 
         'type'          => 'text',
         'class'         => array('byconsolewooodt_delivery_date'),
-           'attributes' =>array('disabled'=>'disabled'),
+           'custom_attributes' =>array('disabled'=>'disabled'),
 
         'label'         => get_option('byconsolewooodt_chekout_page_date_lebel'),
 
