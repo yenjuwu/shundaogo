@@ -2694,43 +2694,43 @@ msgstr "項目識別碼已在多個分類法共用。"
 #: wp-includes/class-wp-locale.php:177
 msgctxt "genitive"
 msgid "June"
-msgstr "六月"
+msgstr "June"
 
 #. translators: month name, genitive
 #: wp-includes/class-wp-locale.php:178
 msgctxt "genitive"
 msgid "July"
-msgstr "七月"
+msgstr "July"
 
 #. translators: month name, genitive
 #: wp-includes/class-wp-locale.php:179
 msgctxt "genitive"
 msgid "August"
-msgstr "八月"
+msgstr "August"
 
 #. translators: month name, genitive
 #: wp-includes/class-wp-locale.php:180
 msgctxt "genitive"
 msgid "September"
-msgstr "九月"
+msgstr "September"
 
 #. translators: month name, genitive
 #: wp-includes/class-wp-locale.php:181
 msgctxt "genitive"
 msgid "October"
-msgstr "十月"
+msgstr "October"
 
 #. translators: month name, genitive
 #: wp-includes/class-wp-locale.php:182
 msgctxt "genitive"
 msgid "November"
-msgstr "十一月"
+msgstr "November"
 
 #. translators: month name, genitive
 #: wp-includes/class-wp-locale.php:183
 msgctxt "genitive"
 msgid "December"
-msgstr "十二月"
+msgstr "December"
 
 #: wp-includes/taxonomy.php:1160 wp-includes/taxonomy.php:1242
 msgid "Term meta cannot be added to terms that are shared between taxonomies."
@@ -3074,13 +3074,13 @@ msgstr "抱歉，該使用者名稱不被允許。"
 #: wp-includes/class-wp-locale.php:196
 msgctxt "November abbreviation"
 msgid "Nov"
-msgstr "十一月"
+msgstr "Nov"
 
 #. translators: three-letter abbreviation of the month
 #: wp-includes/class-wp-locale.php:197
 msgctxt "December abbreviation"
 msgid "Dec"
-msgstr "十二月"
+msgstr "Dec"
 
 #. translators: playlist item title
 #: wp-includes/media.php:1832 wp-includes/media.php:1847
@@ -3096,55 +3096,55 @@ msgstr "使用者名稱只能包含小寫字母 (a-z) 和數字。"
 #: wp-includes/class-wp-locale.php:192
 msgctxt "July abbreviation"
 msgid "Jul"
-msgstr "七月"
+msgstr "Jul"
 
 #. translators: three-letter abbreviation of the month
 #: wp-includes/class-wp-locale.php:193
 msgctxt "August abbreviation"
 msgid "Aug"
-msgstr "八月"
+msgstr "Aug"
 
 #. translators: three-letter abbreviation of the month
 #: wp-includes/class-wp-locale.php:194
 msgctxt "September abbreviation"
 msgid "Sep"
-msgstr "九月"
+msgstr "Sep"
 
 #. translators: three-letter abbreviation of the month
 #: wp-includes/class-wp-locale.php:195
 msgctxt "October abbreviation"
 msgid "Oct"
-msgstr "十月"
+msgstr "Oct"
 
 #. translators: three-letter abbreviation of the month
 #: wp-includes/class-wp-locale.php:186
 msgctxt "January abbreviation"
 msgid "Jan"
-msgstr "一月"
+msgstr "Jan"
 
 #. translators: three-letter abbreviation of the month
 #: wp-includes/class-wp-locale.php:187
 msgctxt "February abbreviation"
 msgid "Feb"
-msgstr "二月"
+msgstr "Feb"
 
 #. translators: three-letter abbreviation of the month
 #: wp-includes/class-wp-locale.php:188
 msgctxt "March abbreviation"
 msgid "Mar"
-msgstr "三月"
+msgstr "Mar"
 
 #. translators: three-letter abbreviation of the month
 #: wp-includes/class-wp-locale.php:189
 msgctxt "April abbreviation"
 msgid "Apr"
-msgstr "四月"
+msgstr "Apr"
 
 #. translators: three-letter abbreviation of the month
 #: wp-includes/class-wp-locale.php:190
 msgctxt "May abbreviation"
 msgid "May"
-msgstr "五月"
+msgstr "May"
 
 #. translators: three-letter abbreviation of the month
 #: wp-includes/class-wp-locale.php:191
