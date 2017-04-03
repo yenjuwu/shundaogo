@@ -106,12 +106,14 @@ function shundao_add_to_cart($pid){
         error_log(print_r($fees,true));
         $hasDeliveryFee= FALSE;
         foreach($fees as $cartFee){
-            if($cartFee->ID=="delivery-cost"){
+            if($cartFee->id=="delivery-cost"){
                 $hasDeliveryFee=TRUE;
+                break;
             }
         }
-        if(!$hasDeliveryFee){
-            wc_add_notice( __( '<strong>Delivery Address</strong>: Please enter the delivery address in the right format as :  Address, City, State zipcode' ), 'error' );
+        if($hasDeliveryFee==FALSE){
+            error_log("throw error");
+            wc_add_notice( __( '<strong>Delivery Address</strong>: Please enter the delivery address in the right format as :  Address, City, State zipcode','shundao' ), 'error' );
         }
     }
     add_action( 'woocommerce_before_checkout_process', 'delivery_tip_sanity_check' );
