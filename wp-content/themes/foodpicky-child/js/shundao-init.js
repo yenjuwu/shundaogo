@@ -57,11 +57,9 @@
    else{
      address = jQuery('.geo-location').find('input[name="location"]').val() + ' GA';
    }
-   if((window.location.pathname) === '/' || (window.location.pathname) === '/zh/'){
         if(jQuery('.sidebar-container').length === 3){
-          jQuery('.sidebar-container').eq(1).remove();
+         jQuery('.sidebar-container').eq(1).remove();
         }
-       }
 // end of search
    jQuery.ajax({
        type: "GET",
