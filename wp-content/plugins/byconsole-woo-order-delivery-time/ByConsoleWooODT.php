@@ -356,8 +356,6 @@ function byconsolewooodt_checkout_field( $checkout ) {
 	woocommerce_form_field( 'byconsolewooodt_delivery_date', array(
 
         'type'          => 'text',
-            'custom_attributes'=>array('disabled'=>'disabled'),
-
         'class'         => array('byconsolewooodt_delivery_date'),
 
         'label'         => get_option('byconsolewooodt_chekout_page_date_lebel'),
