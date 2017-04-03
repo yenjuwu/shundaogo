@@ -98,5 +98,21 @@ function shundao_add_to_cart($pid){
         return $pid;
     }
 }
-
-
+    
+    function delivery_tip_sanity_check(){
+        global $woocommerce;
+        $cart = $woocommerce->cart;
+        $fees = $cart->get_fees();
+        error_log(print_r($fees,true));
+        $hasDeliveryFee= FALSE;
+        foreach($fees as $cartFee){
+            if($cartFee->ID=="delivery-cost"){
+                $hasDeliveryFee=TRUE;
+            }
+        }
+        if(!$hasDeliveryFee){
+            wc_add_notice( __( '<strong>Delivery Address</strong>: Please enter the delivery address in the right format as :  Address, City, State zipcode' ), 'error' );
+        }
+    }
+    add_action( 'woocommerce_before_checkout_process', 'delivery_tip_sanity_check' );
+     

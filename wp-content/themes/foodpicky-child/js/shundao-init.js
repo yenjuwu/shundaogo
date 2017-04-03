@@ -3,7 +3,7 @@
     //bind the keypress
     var regex = /(\d+) ((\w+[ ,])+ ){2}([a-zA-Z]){2} (\d){5}/;
 
-    jQuery('input#delivery_address').keypress( _.debounce( function(e){
+    jQuery('input#delivery_address').keydown( _.debounce( function(e){
         var address = e.currentTarget.value;
         if((currentMatch = regex.exec(address)) !==null && currentMatch.length>0 ){
             // find a way to return vendor address
