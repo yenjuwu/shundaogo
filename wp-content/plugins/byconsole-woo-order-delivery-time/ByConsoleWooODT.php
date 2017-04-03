@@ -395,10 +395,12 @@ add_action('woocommerce_checkout_process', 'byconsolewooodt_checkout_field_proce
 function byconsolewooodt_checkout_field_process() {
 
     // Check if set, if its not set add an error.
-
+    /*
     if ( ! $_POST['byconsolewooodt_delivery_date'] )
 
         wc_add_notice( __( 'Enter your desired delivery date.','byconsole-woo-order-delivery-time' ), 'error' );
+     * 
+     */
 
     if ( ! $_POST['byconsolewooodt_delivery_time'] )
 
