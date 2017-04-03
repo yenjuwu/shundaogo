@@ -57,10 +57,7 @@
    else{
      address = jQuery('.geo-location').find('input[name="location"]').val() + ' GA';
    }
-        if(jQuery('.sidebar-container').length === 3){
-         jQuery('.sidebar-container').eq(1).remove();
-        }
-// end of search
+
    jQuery.ajax({
        type: "GET",
        dataType: "json",
@@ -71,6 +68,7 @@
                jQuery('.geo-location').find('input[name="location"]').val(jQuery('.geo-location').find('input[name="location"]').val());
                jQuery('.geo-location').find('input[name="latitude"]').val(data.results[0].geometry.location.lat);
                jQuery('.geo-location').find('input[name="longitude"]').val(data.results[0].geometry.location.lng);
+            
            } else{
              jQuery('#latitude').val('invalid address');
              jQuery('#longitude').val('invalid address');
@@ -81,6 +79,11 @@
    });
  });
 }
+    if(jQuery('.sidebar-container').length === 3){
+                jQuery('.sidebar-container').eq(1).remove();
+                }
+// end of search
+
 
     //move tip container
     /*
