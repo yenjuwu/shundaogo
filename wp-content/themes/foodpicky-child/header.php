@@ -9,6 +9,10 @@
         <link rel="profile" href="http://gmpg.org/xfn/11">
         <link rel="pingback" href="<?php esc_url(bloginfo('pingback_url')); ?>">        
         <?php
+        if(isset($_SESSION['delivery_cost'])){
+            // need to clear it
+            unset($_SESSION['delivery_cost']);
+        }
         if (!function_exists('has_site_icon') || !has_site_icon()) {
             if (isset($options['favicon']['url']) && !empty($options['favicon']['url'])) {
                 print '<link rel="shortcut icon" href="' . esc_url($options['favicon']['url']) . '" />';

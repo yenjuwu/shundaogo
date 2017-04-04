@@ -103,7 +103,6 @@ function shundao_add_to_cart($pid){
         global $woocommerce;
         $cart = $woocommerce->cart;
         $fees = $cart->get_fees();
-        error_log(print_r($fees,true));
         $hasDeliveryFee= FALSE;
         foreach($fees as $cartFee){
             if($cartFee->id=="delivery-cost"){
@@ -112,7 +111,6 @@ function shundao_add_to_cart($pid){
             }
         }
         if($hasDeliveryFee==FALSE){
-            error_log("throw error");
             wc_add_notice( __( '<strong>Delivery Address</strong>: Please enter the delivery address in the right format as :  Address, City, State zipcode','shundao' ), 'error' );
         }
     }
