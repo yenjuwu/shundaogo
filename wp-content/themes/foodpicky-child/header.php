@@ -13,6 +13,9 @@
             // need to clear it
             unset($_SESSION['delivery_cost']);
         }
+        if(isset($_SESSION['tip_cost'])){
+            unset($_SESSION['tip_cost']);
+        }
         if (!function_exists('has_site_icon') || !has_site_icon()) {
             if (isset($options['favicon']['url']) && !empty($options['favicon']['url'])) {
                 print '<link rel="shortcut icon" href="' . esc_url($options['favicon']['url']) . '" />';
