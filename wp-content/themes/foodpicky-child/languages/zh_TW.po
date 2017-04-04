@@ -25,8 +25,8 @@ msgstr "外送费已加入"
 msgid "There is an issue calculating your charge"
 msgstr "费用计算出问题"
 
-msgid "<strong>Delivery Address</strong>: Please enter the delivery address in the right format as :  Address, City, State zipcode"
-msgstr "<strong>外卖地址 </strong>: 请输入正确的外卖地址格式：Address, City, State Zipcode"
+msgid "Delivery Address: Please enter the delivery address in the right format as :  Address, City, State Zipcode"
+msgstr "外卖地址: 请输入正确的外卖地址格式：Address, City, State Zipcode"
 
 msgid "Delivery Cost:"
 msgstr "送餐费"

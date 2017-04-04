@@ -111,7 +111,7 @@ function shundao_add_to_cart($pid){
             }
         }
         if($hasDeliveryFee==FALSE){
-            wc_add_notice( __( '<strong>Delivery Address</strong>: Please enter the delivery address in the right format as :  Address, City, State zipcode','shundao' ), 'error' );
+            wc_add_notice( __( "Delivery Address: Please enter the delivery address in the right format as :  Address, City, State Zipcode","shundao" ), 'error' );
         }
     }
     add_action( 'woocommerce_before_checkout_process', 'delivery_tip_sanity_check' );
