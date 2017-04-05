@@ -172,3 +172,6 @@ msgstr "Nov"
 msgctxt "December abbreviation"
 msgid "Dec"
 msgstr "Dec"
+
+msgid "Format: 122 Main Street, NY, New York, 10009"
+msgstr "格式为: 122 Main Street, NY, New York, 10009"
