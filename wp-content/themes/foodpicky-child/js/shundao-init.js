@@ -12,7 +12,7 @@
             var vendorAddress=jQuery('input#vendor_address').val();
             getDistanceMatrix(address,vendorAddress);
         }else{
-            jQuery("div#message-container").text("* 请输入正确的外卖地址格式：123 main street, NYC, New York 10009")
+            jQuery("div#message-container").text("* 请输入正确的外卖地址格式：123 Main Street, NY, New York 10009")
             jQuery(this).removeClass("success").addClass("error");
         }
     }, 800 ) );
