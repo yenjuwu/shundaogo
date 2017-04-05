@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             $vendor_address=$post_meta["Address"];
         ?>
         <div id="message-container" class="alert-info"></div>
-        <div class="alert-info"><?php _e("Format: 122 Main Street, NY, New York 10009","shundao") ?></div>
+        <div class="alert-info"><?php _e("Format: 122 Main Street, New York, NY 10009","shundao") ?></div>
         <input type="hidden" id="vendor_address" value="<?php echo $vendor_address[0]; ?>" />
 	<?php if ( ! is_user_logged_in() && $checkout->enable_signup ) : ?>
 
