@@ -48,9 +48,13 @@ function add_delivery_cost(){
         session_start();
         $_SESSION['delivery_cost'] = $cost;
        // figure out how to add custom cost to wc
-       echo json_encode(array("status"=>1,"message"=>__("Delivery Charge has been added","shundao")));
+        $message=__('Delivery Charge has been added','shundao');
+        error_log($message);
+       echo json_encode(array("status"=>1,"message"=>$message));
    }else{
-       echo json_encode(array("status"=>0,"message"=>__("There is an issue calculating your charge","shundao")));
+       $message=__("There is an issue calculating your charge","shundao");
+       error_log($message);
+       echo json_encode(array("status"=>0,"message"=>$message));
    }
    die();
 }

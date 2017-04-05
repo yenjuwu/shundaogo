@@ -32,5 +32,143 @@ msgstr ""
 msgid "Tip"
 msgstr ""
 
-msgid "You can only order items from 1 shop !"
+msgid "you cannot order from multiple restaurants"
 msgstr ""
+
+#. translators: month name, genitive
+#: wp-includes/class-wp-locale.php:172
+msgctxt "genitive"
+msgid "January"
+msgstr ""
+
+#. translators: month name, genitive
+#: wp-includes/class-wp-locale.php:173
+msgctxt "genitive"
+msgid "February"
+msgstr ""
+
+#. translators: month name, genitive
+#: wp-includes/class-wp-locale.php:174
+msgctxt "genitive"
+msgid "March"
+msgstr ""
+
+#. translators: month name, genitive
+#: wp-includes/class-wp-locale.php:175
+msgctxt "genitive"
+msgid "April"
+msgstr ""
+
+#. translators: month name, genitive
+#: wp-includes/class-wp-locale.php:176
+msgctxt "genitive"
+msgid "May"
+msgstr ""
+
+#. translators: month name
+#: wp-includes/class-wp-locale.php:163 wp-includes/class-wp-locale.php:191
+msgid "June"
+msgstr ""
+
+#. translators: month name
+#: wp-includes/class-wp-locale.php:164 wp-includes/class-wp-locale.php:192
+msgid "July"
+msgstr ""
+
+#. translators: month name
+#: wp-includes/class-wp-locale.php:165 wp-includes/class-wp-locale.php:193
+msgid "August"
+msgstr ""
+
+#. translators: month name
+#: wp-includes/class-wp-locale.php:166 wp-includes/class-wp-locale.php:194
+msgid "September"
+msgstr ""
+
+#. translators: month name
+#: wp-includes/class-wp-locale.php:167 wp-includes/class-wp-locale.php:195
+msgid "October"
+msgstr ""
+
+#. translators: month name
+#: wp-includes/class-wp-locale.php:168 wp-includes/class-wp-locale.php:196
+msgid "November"
+msgstr ""
+
+#. translators: month name
+#: wp-includes/class-wp-locale.php:169 wp-includes/class-wp-locale.php:197
+msgid "December"
+msgstr ""
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:186
+msgctxt "January abbreviation"
+msgid "Jan"
+msgstr ""
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:187
+msgctxt "February abbreviation"
+msgid "Feb"
+msgstr ""
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:188
+msgctxt "March abbreviation"
+msgid "Mar"
+msgstr ""
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:189
+msgctxt "April abbreviation"
+msgid "Apr"
+msgstr ""
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:190
+msgctxt "May abbreviation"
+msgid "May"
+msgstr ""
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:191
+msgctxt "June abbreviation"
+msgid "Jun"
+msgstr ""
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:192
+msgctxt "July abbreviation"
+msgid "Jul"
+msgstr ""
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:193
+msgctxt "August abbreviation"
+msgid "Aug"
+msgstr ""
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:194
+msgctxt "September abbreviation"
+msgid "Sep"
+msgstr ""
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:195
+msgctxt "October abbreviation"
+msgid "Oct"
+msgstr ""
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:196
+msgctxt "November abbreviation"
+msgid "Nov"
+msgstr ""
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:197
+msgctxt "December abbreviation"
+msgid "Dec"
+msgstr ""
+

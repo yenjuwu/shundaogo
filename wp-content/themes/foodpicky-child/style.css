@@ -1,5 +1,5 @@
 /*
-Theme Name: Shundao's Theme'
+Theme Name: Shundao
 Theme URI: http://www.fyminds.com
 Author: Yong Qui Zheng
 Author URI: http://www.fyminds.com;
@@ -96,10 +96,10 @@ input.processing{
     display:none;
 }
 input.error{
-    box-shadow: 0 0 3px #CC0000 !important;
+    box-shadow: 0 0 3px #990000 !important;
 }
 input.success{
-    box-shadow: 0 0 3px #7FFF7F !important;
+    box-shadow: 0 0 3px #009933 !important;
 }
 tr.shipping{
     display:none;
@@ -121,6 +121,12 @@ tr.shipping{
     background-color: white;
     margin-top: 5px;
     border-radius: 5px;
+}
+div#message-container{
+    color:#990000;
+    font-size:14px;
+    font-weight: bold;
+    padding-left:4px;
 }
 
 /*
