@@ -5,27 +5,15 @@
 
     jQuery('input#delivery_address').keydown( _.debounce( function(e){
         var address = e.currentTarget.value;
-        if((currentMatch = regex.exec(address)) !==null && currentMatch.length>0 ){
-            // find a way to return vendor address
-            jQuery(this).removeClass("error").addClass("success");
-            addDeliveryChargeProcessing();
+        if(address!==''){
             var vendorAddress=jQuery('input#vendor_address').val();
             getDistanceMatrix(address,vendorAddress);
-        }else{
-            jQuery("div#message-container").text("* 格式为：number(空格)street(,)(空格)city(,)(空格) GA(空格)zipcode");
-            jQuery(this).removeClass("success").addClass("error");
         }
     }, 800 ) );
     jQuery('input#delivery_address').bind("paste",function(e){
         var address = e.originalEvent.clipboardData.getData('text');
-        if((currentMatch = regex.exec(address)) !==null && currentMatch.length>0 ){
-            // find a way to return vendor address
-            jQuery(this).removeClass("error").addClass("success");
-            var vendorAddress=jQuery('input#vendor_address').val();
-            getDistanceMatrix(address,vendorAddress);
-        }else{
-            jQuery(this).removeClass("success").addClass("error");
-        }
+        var vendorAddress=jQuery('input#vendor_address').val();
+        getDistanceMatrix(address,vendorAddress);
     });
     jQuery('input#delivery_address').on('change keyup copy paste cut', function() {
         if(jQuery('input#delivery_address').val()===''){
@@ -103,7 +91,7 @@ function removeDeliveryChargeProcessing(){
 }
 
 function getDistanceMatrix(fromAddress, destAddress){
-     
+        addDeliveryChargeProcessing();
 	var service = new google.maps.DistanceMatrixService();
 	service.getDistanceMatrix(
 	  {
@@ -112,46 +100,58 @@ function getDistanceMatrix(fromAddress, destAddress){
 		travelMode: 'DRIVING',
 		unitSystem: google.maps.UnitSystem.IMPERIAL,
 		avoidHighways: false,
-		avoidTolls: false,
+		avoidTolls: false
 	  }, deliveryCostCallback);
 }
 function deliveryCostCallback(response, status) {
         var messageContainer = jQuery("div#message-container");
-	if(status === 'OK') {
-		//alert("distance" + response.rows[0].elements[0].distance.text);
-		var dist = response.rows[0].elements[0].distance.text;
-                if(parseFloat(dist) > 30){
-                    messageContainer.html("Sorry, You are out of our delivery zoom. Please select a restaurant that is closer to you");
+	if(status === 'OK') {// this mean request is ok
+                var respElements =response.rows[0].elements[0];
+                if(respElements.status==="OK"){
+                    // meaning we got an ok respose
+                    handleGoogleOkStatus(respElements,messageContainer);
                 }else{
-                    var costPerMile = 0.99;
-                    var distVal = convertToValue(dist); 
-                    var deliveryCost = distVal * costPerMile ;
-                    var costAfterFixed =deliveryCost.toFixed(2);
-                    messageContainer.html("距離: " + dist + ", 送外卖费: $" + costAfterFixed);
-                    // if it isn't out of our zone. we need to add cost to the total
-                    jQuery.ajax({
-                        url:woocommerce_params.ajax_url,
-                        method:"POST",
-                        dataType:"json",
-                        data:{'delivery_cost':costAfterFixed,'action':'add_delivery_cost'},
-                        success:function(data,status){
-                            if(status==="success" && data.status===1){
-                                // meaning that this is success
-                                jQuery("body").trigger("update_checkout");
-                                jQuery("#message-container").html(data.message);
-                                removeDeliveryChargeProcessing();
-                            }else{
-                                jQuery("#message-container").html(data.message);
-                                removeDeliveryChargeProcessing();
-                            }
-                        }
-                    });
+                    handleGoogleNotOkStatus(messageContainer,respElements.status);
                 }
 	}else{
-            //there is an error
-            messageContainer.html("There seems to be an issue calculating your delivery cost");
-            removeDeliveryChargeProcessing();
+            handleGoogleNotOkStatus(messageContainer,respElements,"NOT_OK");
         }
+}
+function handleGoogleNotOkStatus(messageContainer,status){
+    if(status==="NOT_FOUND" || status === "ZERO_RESULTS"){
+        messageContainer.html("很抱歉，找不到在下的地址！");
+    }else{
+        messageContainer.html("很抱歉，无法算出你的外送费用");
+    }
+    removeDeliveryChargeProcessing();
+    // handle the message
+}
+
+function handleGoogleOkStatus(response,messageContainer){
+    var dist = response.distance.text;
+    var costPerMile = 0.99;
+    var distVal = convertToValue(dist); 
+    var deliveryCost = distVal * costPerMile ;
+    var costAfterFixed =deliveryCost.toFixed(2);
+    messageContainer.html("距離: " + dist + ", 送外卖费: $" + costAfterFixed);
+    // if it isn't out of our zone. we need to add cost to the total
+    jQuery.ajax({
+        url:woocommerce_params.ajax_url,
+        method:"POST",
+        dataType:"json",
+        data:{'delivery_cost':costAfterFixed,'action':'add_delivery_cost'},
+        success:function(data,status){
+            if(status==="success" && data.status===1){
+                // meaning that this is success
+                jQuery("body").trigger("update_checkout");
+                jQuery("#message-container").html(data.message);
+                removeDeliveryChargeProcessing();
+            }else{
+                jQuery("#message-container").html(data.message);
+                removeDeliveryChargeProcessing();
+            }
+        }
+    });     
 }
 
 function convertToValue(inputDistance) {
