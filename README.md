@@ -1,4 +1,4 @@
-# shundaogo
+# ShundaoGo
 
 ## Synopsis
 
@@ -29,9 +29,9 @@ This wordpress site contain WooCommerce plugins
 
 ## Contributors
 
-Yong Qui Zheng
-Jay Kim
-Wei Wang
+Yong Qui Zheng \n
+Jay Kim \n
+Wei Wang \n
 
 ## License
 
