@@ -5,9 +5,15 @@
 
     jQuery('input#delivery_address').keydown( _.debounce( function(e){
         var address = e.currentTarget.value;
-        if(address!==''){
+        if((currentMatch = regex.exec(address)) !==null && currentMatch.length>0 ){
+            // find a way to return vendor address
+            jQuery(this).removeClass("error").addClass("success");
+            addDeliveryChargeProcessing();
             var vendorAddress=jQuery('input#vendor_address').val();
             getDistanceMatrix(address,vendorAddress);
+        }else{
+            jQuery("div#message-container").text("* 格式为：number(空格)street(,)(空格)city(,)(空格) GA(空格)zipcode");
+            jQuery(this).removeClass("success").addClass("error");
         }
     }, 800 ) );
     jQuery('input#delivery_address').bind("paste",function(e){
@@ -92,20 +98,20 @@ function removeDeliveryChargeProcessing(){
 
 function getDistanceMatrix(fromAddress, destAddress){
         addDeliveryChargeProcessing();
-	var service = new google.maps.DistanceMatrixService();
-	service.getDistanceMatrix(
-	  {
-		origins: [fromAddress],
-		destinations: [destAddress],
-		travelMode: 'DRIVING',
-		unitSystem: google.maps.UnitSystem.IMPERIAL,
-		avoidHighways: false,
-		avoidTolls: false
-	  }, deliveryCostCallback);
+    var service = new google.maps.DistanceMatrixService();
+    service.getDistanceMatrix(
+      {
+        origins: [fromAddress],
+        destinations: [destAddress],
+        travelMode: 'DRIVING',
+        unitSystem: google.maps.UnitSystem.IMPERIAL,
+        avoidHighways: false,
+        avoidTolls: false
+      }, deliveryCostCallback);
 }
 function deliveryCostCallback(response, status) {
         var messageContainer = jQuery("div#message-container");
-	if(status === 'OK') {// this mean request is ok
+    if(status === 'OK') {// this mean request is ok
                 var respElements =response.rows[0].elements[0];
                 if(respElements.status==="OK"){
                     // meaning we got an ok respose
@@ -113,7 +119,7 @@ function deliveryCostCallback(response, status) {
                 }else{
                     handleGoogleNotOkStatus(messageContainer,respElements.status);
                 }
-	}else{
+    }else{
             handleGoogleNotOkStatus(messageContainer,respElements,"NOT_OK");
         }
 }
@@ -155,10 +161,10 @@ function handleGoogleOkStatus(response,messageContainer){
 }
 
 function convertToValue(inputDistance) {
-	var arr = inputDistance.split(" ");
-	var dist = arr[0];
-	dist = dist.replace(",","");
-	return dist;
+    var arr = inputDistance.split(" ");
+    var dist = arr[0];
+    dist = dist.replace(",","");
+    return dist;
 }
 
 
