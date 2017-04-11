@@ -20,12 +20,12 @@ Provide an online ordering system.
 3. Change the table_prefix to sd_
 4. Enable Wordpress Multisite - by adding this line of code to your wp-config.php define('MULTISITE', true);
 5. Import shundao-local.sql file
-6. Unizp the the upload.zip file into your wp-content/ folder
-7. Init your local repo to https://github.com/zheng4uga/shundaogo.git
-    a. git init
-    b. git remote add origin https://github.com/zheng4uga/shundaogo.git
-    c. git remote -v
-    d. git reset --hard HEAD ( this function should reset your local to the HEAD where your local should be sync with git )
+6. Unizp the the upload.zip file into your wp-content/ folder. This file is 1gb. So contact Willie to get this zip file 
+7. Init your local repo to https://github.com/zheng4uga/shundaogo.git <br />
+    1. git init 
+    2. git remote add origin https://github.com/zheng4uga/shundaogo.git
+    3. git remote -v
+    4. **git reset --hard HEAD** ( this function should reset your local to the HEAD where your local should be sync with git )
 
 
 
@@ -35,9 +35,9 @@ This wordpress site contain WooCommerce plugins
 
 ## Contributors
 
-Yong Qui Zheng \n
-Jay Kim \n
-Wei Wang \n
+Yong Qui Zheng <br />
+Jay Kim <br />
+Wei Wang <br />
 
 ## License
 
