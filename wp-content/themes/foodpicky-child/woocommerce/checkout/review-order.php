@@ -54,7 +54,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		?>
 	</tbody>
 	<tfoot>
-
 		<tr class="cart-subtotal">
 			<th><?php _e( 'Subtotal', 'woocommerce' ); ?></th>
 			<td><?php wc_cart_totals_subtotal_html(); ?></td>
@@ -66,16 +65,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<td><?php wc_cart_totals_coupon_html( $coupon ); ?></td>
 			</tr>
 		<?php endforeach; ?>
+                <?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
 
-		<?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
+                        <?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
 
-			<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
+                        <?php wc_cart_totals_shipping_html(); ?>
 
-			<?php wc_cart_totals_shipping_html(); ?>
+                        <?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
 
-			<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
-
-		<?php endif; ?>
+                <?php endif; ?>
 
 		<?php foreach ( WC()->cart->get_fees() as $fee ) : ?>
 			<tr class="fee">

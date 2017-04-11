@@ -1,0 +1,177 @@
+"Project-Id-Version: Shundao'\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-02 21:03+0000\n"
+"PO-Revision-Date: 2017-04-02 21:06+0000\n"
+"Last-Translator: admin <yong.zheng@fyminds.com>\n"
+"Language-Team: Chinese (Taiwan)\n"
+"Language: zh-TW\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco - https://localise.biz/"
+
+msgid "Tip has been added"
+msgstr "小费被加入"
+
+msgid "Failed to add tip"
+msgstr "加入小费出现问题"
+
+msgid "Delivery Charge has been added"
+msgstr "外送费已加入"
+
+msgid "There is an issue calculating your charge"
+msgstr "费用计算出问题"
+
+msgid "Please enter the delivery address in the right format as Address, City, State Zipcode"
+msgstr "请输入正确的外卖地址格式 Address, City, State Zipcode"
+
+msgid "Delivery Cost:"
+msgstr "送餐费"
+
+msgid "Tip"
+msgstr "小费"
+
+msgid "you cannot order from multiple restaurants"
+msgstr "对不起， 现在我们只支持单家餐馆订餐"
+
+#. translators: month name, genitive
+#: wp-includes/class-wp-locale.php:172
+msgctxt "genitive"
+msgid "January"
+msgstr "January"
+
+#. translators: month name, genitive
+#: wp-includes/class-wp-locale.php:173
+msgctxt "genitive"
+msgid "February"
+msgstr "February"
+
+#. translators: month name, genitive
+#: wp-includes/class-wp-locale.php:174
+msgctxt "genitive"
+msgid "March"
+msgstr "March"
+
+#. translators: month name, genitive
+#: wp-includes/class-wp-locale.php:175
+msgctxt "genitive"
+msgid "April"
+msgstr "April"
+
+#. translators: month name, genitive
+#: wp-includes/class-wp-locale.php:176
+msgctxt "genitive"
+msgid "May"
+msgstr "May"
+
+#. translators: month name
+#: wp-includes/class-wp-locale.php:163 wp-includes/class-wp-locale.php:191
+msgid "June"
+msgstr "June"
+
+#. translators: month name
+#: wp-includes/class-wp-locale.php:164 wp-includes/class-wp-locale.php:192
+msgid "July"
+msgstr "July"
+
+#. translators: month name
+#: wp-includes/class-wp-locale.php:165 wp-includes/class-wp-locale.php:193
+msgid "August"
+msgstr "August"
+
+#. translators: month name
+#: wp-includes/class-wp-locale.php:166 wp-includes/class-wp-locale.php:194
+msgid "September"
+msgstr "September"
+
+#. translators: month name
+#: wp-includes/class-wp-locale.php:167 wp-includes/class-wp-locale.php:195
+msgid "October"
+msgstr "October"
+
+#. translators: month name
+#: wp-includes/class-wp-locale.php:168 wp-includes/class-wp-locale.php:196
+msgid "November"
+msgstr "November"
+
+#. translators: month name
+#: wp-includes/class-wp-locale.php:169 wp-includes/class-wp-locale.php:197
+msgid "December"
+msgstr "December"
+
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:186
+msgctxt "January abbreviation"
+msgid "Jan"
+msgstr "Jan"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:187
+msgctxt "February abbreviation"
+msgid "Feb"
+msgstr "Feb"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:188
+msgctxt "March abbreviation"
+msgid "Mar"
+msgstr "Mar"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:189
+msgctxt "April abbreviation"
+msgid "Apr"
+msgstr "Apr"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:190
+msgctxt "May abbreviation"
+msgid "May"
+msgstr "May"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:191
+msgctxt "June abbreviation"
+msgid "Jun"
+msgstr "Jun"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:192
+msgctxt "July abbreviation"
+msgid "Jul"
+msgstr "Jul"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:193
+msgctxt "August abbreviation"
+msgid "Aug"
+msgstr "Aug"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:194
+msgctxt "September abbreviation"
+msgid "Sep"
+msgstr "Sep"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:195
+msgctxt "October abbreviation"
+msgid "Oct"
+msgstr "Oct"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:196
+msgctxt "November abbreviation"
+msgid "Nov"
+msgstr "Nov"
+
+#. translators: three-letter abbreviation of the month
+#: wp-includes/class-wp-locale.php:197
+msgctxt "December abbreviation"
+msgid "Dec"
+msgstr "Dec"
+
+msgid "Format: 122 Main Street, NY, New York, 10009"
+msgstr "格式为: 122 Main Street, NY, New York, 10009"

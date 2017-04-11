@@ -9,6 +9,13 @@
         <link rel="profile" href="http://gmpg.org/xfn/11">
         <link rel="pingback" href="<?php esc_url(bloginfo('pingback_url')); ?>">        
         <?php
+        if(isset($_SESSION['delivery_cost'])){
+            // need to clear it
+            unset($_SESSION['delivery_cost']);
+        }
+        if(isset($_SESSION['tip_cost'])){
+            unset($_SESSION['tip_cost']);
+        }
         if (!function_exists('has_site_icon') || !has_site_icon()) {
             if (isset($options['favicon']['url']) && !empty($options['favicon']['url'])) {
                 print '<link rel="shortcut icon" href="' . esc_url($options['favicon']['url']) . '" />';
@@ -20,6 +27,16 @@
 
     <body <?php body_class(); ?>>        
         <div id="preloader"><div id="status"></div></div>
+        <?php if(isset($_SESSION['sd_error'])){?>
+            <div id="alert">
+            <a class="alert" href="#alert"><?php echo __("对不起， 现在我们只支持单家餐馆订餐", "shundao"); ?></a>
+        </div>
+        <?php
+            //kill the error to only show once
+            unset($_SESSION['sd_error']);
+            } 
+           
+        ?>
         <div id="page" class="hfeed site">
             <header id="masthead" class="site-header clearfix">
                 <?php

@@ -1,5 +1,5 @@
 /*
-Theme Name: Shundao's Theme'
+Theme Name: Shundao
 Theme URI: http://www.fyminds.com
 Author: Yong Qui Zheng
 Author URI: http://www.fyminds.com;
@@ -8,9 +8,27 @@ Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: Multi-Vendor
-Text Domain: foodpick-child
+Text Domain: shundao
 Template: foodpicky
 */
+
+/*Added 4/1/2017*/
+
+@media (min-width:480px){
+  .list-profile{
+    width: 100%
+  }
+  .entry.list-profile{
+    width: 30%;
+    display: inline-block !important;
+    margin-right: 10px;
+  }
+ div.list-profile div.azl_profile .entry-data{
+    height: 190px;
+  }
+}
+/*END*/
+
 .shundao-vendor-list .entry-data{
     display:inline !important;
 }
@@ -68,5 +86,217 @@ Template: foodpicky
 }
 div.entry-footer span.address{
     display: none !important;
+}
+input.processing{
+     background:url('img/spinner.gif') no-repeat right center !important;
+}
+.spinner{
+    background:url('img/spinner.gif') no-repeat !important;
+    height:20px;
+    display:none;
+}
+input.error{
+    box-shadow: 0 0 3px #990000 !important;
+}
+input.success{
+    box-shadow: 0 0 3px #009933 !important;
+}
+tr.shipping{
+    display:none;
+}
+.close-now{
+    border: 2px solid #e8500e;
+    width: 30%;
+    text-align: center;
+    font-weight: bold;
+    background-color: white;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+.open-now{
+    border: 2px solid #00cc66;
+    width: 30%;
+    text-align: center;
+    font-weight: bold;
+    background-color: white;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+div.alert-info{
+    color:#990000;
+    font-size:16px;
+    font-weight: bold;
+    padding-left:4px;
+}
+
+/*
+    tip button
+*/
+div.tip-radio-container input[type=radio], div.tip-radio-container input[type=checkbox] {
+		display:none;
+	}
+
+div.tip-radio-container input[type=radio] + label, div.tip-radio-container input[type=checkbox] + label {
+    display:inline-block;
+    margin:-2px;
+    font-weight: bold;
+    padding: 4px 24px;
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 20px;
+    position:static !important;
+    color: #333;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #f5f5f5;
+    background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
+    background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
+    background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
+    background-image: -o-linear-gradient(top,#fff,#e6e6e6);
+    background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+    background-repeat: repeat-x;
+    border: 1px solid #ccc;
+    border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+    border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+    border-bottom-color: #b3b3b3;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+}
+
+div.tip-radio-container input[type=radio]:checked + label, div.tip-radio-container input[type=checkbox]:checked + label{
+        background-image: none;
+       outline: 0;
+       -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+       -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+       box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+       background-color:#e0e0e0;
+}
+div.tip-radio-container input[type=radio]:checked + label{
+    background-color:#33FF3C !important;
+}
+div.tip-radio-container input[type=radio] + label:before{
+    left:999999px !important;
+}
+div.do-not-show{
+    display:none;
+}
+
+
+/* Alert */
+
+#alert {
+    position: relative;
+    z-index:1000;
+}
+#alert:hover:after {
+    background: hsla(0,0%,0%,.8);
+    border-radius: 3px;
+    color: #f6f6f6;
+    content: 'Click to dismiss';
+    font: bold 12px/30px sans-serif;
+    height: 30px;
+    left: 50%;
+    margin-left: -60px;
+    position: absolute;
+    text-align: center;
+    top: 50px;
+    width: 120px;
+}
+#alert:hover:before {
+    border-bottom: 10px solid hsla(0,0%,0%,.8);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    content: '';
+    height: 0;
+    left: 50%;
+    margin-left: -10px;
+    position: absolute;
+    top: 40px;
+    width: 0;
+}
+#alert:target {
+    display: none;
+}
+.alert {
+    background-color: #c4453c;
+    background-image: -webkit-linear-gradient(135deg, transparent,
+                      transparent 25%, hsla(0,0%,0%,.05) 25%,
+                      hsla(0,0%,0%,.05) 50%, transparent 50%,
+                      transparent 75%, hsla(0,0%,0%,.05) 75%,
+                      hsla(0,0%,0%,.05));
+    background-image: -moz-linear-gradient(135deg, transparent,
+                      transparent 25%, hsla(0,0%,0%,.1) 25%,
+                      hsla(0,0%,0%,.1) 50%, transparent 50%,
+                      transparent 75%, hsla(0,0%,0%,.1) 75%,
+                      hsla(0,0%,0%,.1));
+    background-image: -ms-linear-gradient(135deg, transparent,
+                      transparent 25%, hsla(0,0%,0%,.1) 25%,
+                      hsla(0,0%,0%,.1) 50%, transparent 50%,
+                      transparent 75%, hsla(0,0%,0%,.1) 75%,
+                      hsla(0,0%,0%,.1));
+    background-image: -o-linear-gradient(135deg, transparent,
+                      transparent 25%, hsla(0,0%,0%,.1) 25%,
+                      hsla(0,0%,0%,.1) 50%, transparent 50%,
+                      transparent 75%, hsla(0,0%,0%,.1) 75%,
+                      hsla(0,0%,0%,.1));
+    background-image: linear-gradient(135deg, transparent,
+                      transparent 25%, hsla(0,0%,0%,.1) 25%,
+                      hsla(0,0%,0%,.1) 50%, transparent 50%,
+                      transparent 75%, hsla(0,0%,0%,.1) 75%,
+                      hsla(0,0%,0%,.1));
+    background-size: 20px 20px;
+    box-shadow: 0 5px 0 hsla(0,0%,0%,.1);
+    color: #f6f6f6;
+    display: block;
+    font: bold 16px/40px sans-serif;
+    height: 40px;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    top: -45px;
+    width: 100%;
+    -webkit-animation: alert 1s ease forwards;
+       -moz-animation: alert 1s ease forwards;
+        -ms-animation: alert 1s ease forwards;
+         -o-animation: alert 1s ease forwards;
+            animation: alert 1s ease forwards;
+}
+
+nav.primary-navigation ul.nav-menu:not(.vc) > li.menu-item > a.menu-link, nav.primary-navigation ul.sub-menu:not(.vc) > li.menu-item > a.menu-link
+{
+    font-size: 15px !important;
+}
+
+/* Animation */
+
+@-webkit-keyframes alert {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { top: 0; }
+}
+@-moz-keyframes alert {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { top: 0; }
+}
+@-ms-keyframes alert {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { top: 0; }
+}
+@-o-keyframes alert {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { top: 0; }
+}
+@keyframes alert {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { top: 0; }
 }
 
