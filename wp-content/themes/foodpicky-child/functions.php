@@ -116,5 +116,14 @@ function shundao_add_to_cart($pid){
             wc_add_notice( __( "请输入正确的外卖地址格式 Address, City, State Zipcode","shundao" ), 'error' );
         }
     }
-    add_action( 'woocommerce_before_checkout_process', 'delivery_tip_sanity_check' );
+    add_action( 'woocommerce_before_checkout_process', 'delivery_tip_sanity_check' );    
+    function filter_woocommerce_get_order_item_totals($total_rows,$value='',$display=0){
+        if(count($total_rows)>0){
+            unset($total_rows['shipping']);
+        }
+        return $total_rows;
+
+    };
+    add_filter( 'woocommerce_get_order_item_totals', 'filter_woocommerce_get_order_item_totals', 10, 3 ); 
+
      
