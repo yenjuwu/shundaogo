@@ -13,7 +13,7 @@
 <?php wp_footer(); ?>
 <!-- auto embed google map lib TODO:need to get the key from property field instead -->
 <script type="text/javascript"
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMH8UEFUK1wGlWpERmDzimOwQk_CPIfRQ">
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMH8UEFUK1wGlWpERmDzimOwQk_CPIfRQ&libraries=places">
 </script>
 </body>
 </html>

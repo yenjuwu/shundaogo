@@ -12,6 +12,7 @@ function my_theme_enqueue_styles() {
     );
     wp_enqueue_script('sd-underscore', get_stylesheet_directory_uri().'/js/underscore-min.js');
     wp_enqueue_script('sd-location', get_stylesheet_directory_uri().'/js/shundao-location.js');
+    wp_enqueue_script('sd-google-autocomplete', get_stylesheet_directory_uri().'/js/google-autocomplete.js');
     wp_enqueue_script('sd-init', get_stylesheet_directory_uri().'/js/shundao-init.js');
 
 }

@@ -1,8 +1,12 @@
 ;jQuery(document).ready(function(){
-
-    //bind the keypress
-    var regex = /(\d+) ((\w+[ ,])+ ){2}([a-zA-Z]){2} (\d){5}/;
-
+    var address_field=jQuery('input#delivery_address');
+    if(address_field.length>0){
+        initAutocomplete();
+        //bind the keypress
+        //var regex = /(\d+) ((\w+[ ,])+ ){2}([a-zA-Z]){2} (\d){5}/;
+        jQuery('input#delivery_address').focus(geolocate);
+    }
+    /*
     jQuery('input#delivery_address').keydown( _.debounce( function(e){
         var address = e.currentTarget.value;
         if((currentMatch = regex.exec(address)) !==null && currentMatch.length>0 ){
@@ -16,6 +20,7 @@
             jQuery(this).removeClass("success").addClass("error");
         }
     }, 800 ) );
+    */
     jQuery('input#delivery_address').bind("paste",function(e){
         var address = e.originalEvent.clipboardData.getData('text');
         var vendorAddress=jQuery('input#vendor_address').val();
