@@ -84,6 +84,49 @@
                 }
 // end of search
 
+//Initilizing Checkout page Accordion under narrow screen size
+    (function(){
+        var currentDisplayedAccordionPanel; 
+        function toggleAccordionPanel(panelElement){
+            if(panelElement && panelElement.hasClass("accordion_panel")){
+                panelElement.toggleClass('active');
+            }
+        }
+        var accordions = jQuery(".accordion_head").each(function(){
+            var self = jQuery(this);
+            var nextButton = self.next().find('.accordion_next_button');
+            nextButton.click(function(e){ 
+                for(var i=0;i<accordions.length;i++){
+                    console.log(accordions[i]);
+                    console.log(self);
+                    if(accordions[i]===self[0]){
+                        console.log("found");
+                        self.click();
+                        accordions[i+1].click();
+                    }
+                }
+                e.preventDefault();
+            });
+        }).click(function(){
+            var self = jQuery(this);
+            if(this === currentDisplayedAccordionPanel){
+                self.toggleClass('active');
+                toggleAccordionPanel(self.next()); 
+                currentDisplayedAccordionPanel=null;
+            }else{
+                if(currentDisplayedAccordionPanel){
+                    var previous=jQuery(currentDisplayedAccordionPanel)
+                    jQuery(currentDisplayedAccordionPanel).toggleClass('active');
+                    toggleAccordionPanel(previous.next());  
+                }
+                currentDisplayedAccordionPanel=this;
+                self.toggleClass('active');
+                toggleAccordionPanel(self.next()); 
+            }
+        }); 
+        
+    })();
+
 });
 function removeAllVisualStatus(){
     jQuery('input#delivery_address').removeClass("success").removeClass("error");

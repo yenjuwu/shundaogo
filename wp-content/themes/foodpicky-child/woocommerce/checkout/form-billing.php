@@ -27,23 +27,24 @@ if ( ! defined( 'ABSPATH' ) ) {
       
 	<?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
 
-		<h3><?php _e( 'Billing &amp; Shipping', 'woocommerce' ); ?></h3>
+		<h3 class="accordion_head"><?php _e( 'Billing &amp; Shipping', 'woocommerce' ); ?></h3>
 
 	<?php else : ?>
 
-		<h3><?php _e( 'Billing Details', 'woocommerce' ); ?></h3>
+		<h3 class="accordion_head"><?php _e( 'Billing Details', 'woocommerce' ); ?></h3>
 
 	<?php endif; ?>
+	<div class="accordion_panel">
+		<?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
 
-	<?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
+		<?php foreach ( $checkout->checkout_fields['billing'] as $key => $field ) : ?>
 
-	<?php foreach ( $checkout->checkout_fields['billing'] as $key => $field ) : ?>
+			<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
 
-		<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
+		<?php endforeach; ?>
 
-	<?php endforeach; ?>
+		<?php do_action('woocommerce_after_checkout_billing_form', $checkout ); ?>
 
-	<?php do_action('woocommerce_after_checkout_billing_form', $checkout ); ?>
         <?php
             $cart = WC()->cart->get_cart();
             $keys = array_keys($cart);
@@ -58,7 +59,10 @@ if ( ! defined( 'ABSPATH' ) ) {
         ?>
         <div id="message-container" class="alert-info"></div>
         <div class="alert-info"><?php _e("Format: 122 Main Street, New York, NY 10009","shundao") ?></div>
+		
         <input type="hidden" id="vendor_address" value="<?php echo $vendor_address[0]; ?>" />
+		<button class="accordion_next_button">Next</button>
+	</div>
 	<?php if ( ! is_user_logged_in() && $checkout->enable_signup ) : ?>
 
 		<?php if ( $checkout->enable_guest_checkout ) : ?>
