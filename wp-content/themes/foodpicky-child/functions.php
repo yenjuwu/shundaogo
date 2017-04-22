@@ -88,10 +88,9 @@ function shundao_add_to_cart($pid){
             $_product[] = $values['data']->post;
         }
         if(isset($_product[0]->ID)){ //getting first item from cart
-            $product_in_cart_vendor_id = get_post_field( 'post_author', $_product[0]->ID);
-            $product_added_vendor_id = get_post_field( 'post_author', $pid );
-
-            if( $product_in_cart_vendor_id !== $product_added_vendor_id ){
+            $in_cart_id = $_product[0]->ID;
+            $diff_vendor = is_from_different_vendor($in_cart_id, $pid);
+            if($diff_vendor){
                 //$woocommerce->cart->empty_cart(); 
                 session_start();
                 $_SESSION['sd_error']=__("you cannot order from multiple restaurants", "shundao");
@@ -100,7 +99,26 @@ function shundao_add_to_cart($pid){
         } 
         return $pid;
     }
+    return $pid;
 }
+    function is_from_different_vendor($in_cart_pid,$pid){
+        $diff_vendor=TRUE;
+        $in_cart_product= get_post($in_cart_pid);
+        $buying_product= get_post($pid);
+        if($in_cart_product->post_type=="product_variation"){
+            //meaing the item for the in cart product is an variation item
+            $in_cart_pid = $in_cart_product->post_parent;// if it's an variation only care about the parent post 
+        }
+        if($buying_product->post_type=="product_variation"){
+            $pid = $buying_product->post_parent;// if it's a variation only care about the parent post
+        }
+        $in_cart_vid = get_post_field( 'post_author', $in_cart_pid);
+        $buying_vid = get_post_field('post_author',$pid);
+        if($in_cart_vid == $buying_vid){
+            $diff_vendor=FALSE;
+        }
+        return $diff_vendor;
+    }
     
     function delivery_tip_sanity_check(){
         global $woocommerce;
