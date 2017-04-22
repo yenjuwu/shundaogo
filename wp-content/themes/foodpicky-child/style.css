@@ -130,6 +130,92 @@ div.alert-info{
 }
 
 /*
+    styles for creating accordions for checkout page, and fix layout problem when displayed in narrow screen
+*/
+
+@media (min-width:769px){
+    .checkout.woocommerce-checkout .accordion_next_button{
+        display:none;
+    }
+}
+@media (max-width:768px){
+    .coupon, .coupon input[type="text"]{
+        width:100% !important;
+    }
+    .coupon input[type="submit"],.coupon+input[type="submit"]{
+        width:45%;
+        margin-left:5%;
+    }
+
+    .checkout.woocommerce-checkout .accordion_head{
+        background-color: #ddd;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        text-align: left;
+        border: none;
+        outline: none;
+        transition: 0.4s;
+        margin-bottom: 0px !important;
+    }
+    .checkout.woocommerce-checkout .accordion_head:after {
+        content: '\002B';
+        font-size: 13px;
+        color: #777;
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+    } 
+    .checkout.woocommerce-checkout .accordion_head.active:after{
+        content: "\2212";
+    }
+    .checkout.woocommerce-checkout .accordion_panel.active{
+         max-height:500px;
+    }
+    .checkout.woocommerce-checkout .accordion_panel {
+        -moz-transition: max-height 2s;
+        -ms-transition: max-height 2s;
+        -o-transition: max-height 2s;
+        -webkit-transition: max-height 2s;
+        transition: max-height 2s; 
+        max-height:0px;
+        background: #eee;
+        overflow: hidden;
+        padding: 5px;
+    }
+    .checkout.woocommerce-checkout .accordion_next_button{
+        display: inline-block;
+        background-color: #e8500e;
+        color: #ffffff;
+        line-height: 40px;
+        height: 40px;
+        font-weight: 400;
+        font-size: 14px;
+        padding: 0 15px;
+        border-radius: 3px;
+        cursor: pointer;
+        border: none;
+        width:100%;
+        margin: 10px 0px;
+        outline: none;
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+        -webkit-transition: all 0.2s ease;
+        -khtml-transition: all 0.2s ease;
+        -moz-transition: all 0.2s ease;
+        -ms-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+    }
+
+}
+
+/*
+    END checkout page
+*/
+
+
+
+/*
     tip button
 */
 div.tip-radio-container input[type=radio], div.tip-radio-container input[type=checkbox] {
