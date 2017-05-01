@@ -5,3 +5,10 @@ p.buttons{ text-align:center;}
 input[type="submit"]{ width:300px;}
 p.min-shipping-time{ text-align:center;}
 p.min-shipping-time img{ height:30px;}
+
+.ui-datepicker table.ui-datepicker-calendar tbody tr th, .ui-datepicker table.ui-datepicker-calendar tbody tr td{
+    padding: 10px 12px 10px 3px !important;
+}
+table.ui-datepicker-calendar{
+    width: 100% !important;
+}
