@@ -57,9 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             $post_meta= get_post_meta($post_id);
             $vendor_address=$post_meta["Address"];
         ?>
-        <div id="message-container" class="alert-info"></div>
-        <div class="alert-info"><?php _e("Format: 122 Main Street, New York, NY 10009","shundao") ?></div>
-		
+        <div id="message-container" class="alert-info"></div>		
         <input type="hidden" id="vendor_address" value="<?php echo $vendor_address[0]; ?>" />
 		<button class="accordion_next_button">Next</button>
 	</div>
