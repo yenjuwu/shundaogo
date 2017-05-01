@@ -74,33 +74,32 @@ function add_fee_cost_from_session() {
     }
 }
 
-add_filter('woocommerce_add_to_cart_product_id','shundao_add_to_cart');
-function shundao_add_to_cart($pid){
-    global $woocommerce;
-    $cart = $woocommerce->cart;
-    if($cart->is_empty()){
-        // if cart is empty we don't need to do any check at all
-        return $pid;
-    }else{
-        $items = $cart->get_cart();
-        $_product = array();
-        foreach($items as $item => $values) {
-            $_product[] = $values['data']->post;
-        }
-        if(isset($_product[0]->ID)){ //getting first item from cart
-            $in_cart_id = $_product[0]->ID;
-            $diff_vendor = is_from_different_vendor($in_cart_id, $pid);
-            if($diff_vendor){
-                //$woocommerce->cart->empty_cart(); 
-                session_start();
-                $_SESSION['sd_error']=__("you cannot order from multiple restaurants", "shundao");
-                return null;
+    add_filter('woocommerce_add_to_cart_product_id','shundao_add_to_cart');
+    function shundao_add_to_cart($pid){
+        global $woocommerce;
+        $cart = $woocommerce->cart;
+        if($cart->is_empty()){
+            // if cart is empty we don't need to do any check at all
+            return $pid;
+        }else{
+            $items = $cart->get_cart();
+            $_product = array();
+            foreach($items as $item => $values) {
+                $_product[] = $values['data']->post;
             }
-        } 
+            if(isset($_product[0]->ID)){ //getting first item from cart
+                $in_cart_id = $_product[0]->ID;
+                $diff_vendor = is_from_different_vendor($in_cart_id, $pid);
+                if($diff_vendor){
+                    session_start();
+                    $_SESSION['sd_error']=__("you cannot order from multiple restaurants", "shundao");
+                    return null;
+                }
+            } 
+            return $pid;
+        }
         return $pid;
     }
-    return $pid;
-}
     function is_from_different_vendor($in_cart_pid,$pid){
         $diff_vendor=TRUE;
         $in_cart_product= get_post($in_cart_pid);
@@ -142,7 +141,7 @@ function shundao_add_to_cart($pid){
         }
         return $total_rows;
 
-    };
+    }
     add_filter( 'woocommerce_get_order_item_totals', 'filter_woocommerce_get_order_item_totals', 10, 3 ); 
 
      
