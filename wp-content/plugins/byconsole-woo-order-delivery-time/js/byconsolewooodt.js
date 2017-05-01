@@ -17,7 +17,7 @@ jQuery(document).ready(function () {
            var date = new Date();
            var datePlusHour = new Date(date);
            var remainder = 15 - date.getMinutes() % 15;
-           datePlusHour.setMinutes(date.getMinutes() + remainder + 45);
+           datePlusHour.setMinutes(date.getMinutes() + remainder + 60);
            var dateString = monthNames[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
            var time = datePlusHour.toLocaleString('en-US', { hour: 'numeric', minute:'numeric', hour12: true });
            if(jQuery('#byconsolewooodt_delivery_date').length){
