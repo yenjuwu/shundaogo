@@ -248,7 +248,12 @@ border-radius: 5px;"
     <label for="radio3"><?php echo "18% ($".(number_format($sug3,2)).")";?></label>
     <input class="tip-selection" onclick="setTipValue(this.value)" type="radio" id="radio4" name="radios" value="<?php echo (number_format($sug4,2));?>">
     <label for="radio4"><?php echo "20% ($".(number_format($sug4,2)).")";?></label>
-
+    <div style="margin-top:10px;" class="tip-control">
+        <input style="line-height:1.5em;text-align: center;width:35%;display:inline-block" type="text" 
+               name="value_deltip" class="input-text-deltip"
+        placeholder="<?php echo $options['tip_holder']; ?>" 
+        id="value_deltip" value="">
+    </div>
   </div>  
 <script>		
 function setTipValue(tip) {
@@ -269,6 +274,7 @@ function uploadTipValue(tip){
             }
             jQuery(".spinner").hide();
             jQuery("p.tip-message").html(data.message);
+            jQuery("#value_deltip").val(tip);
         }
     });
 }
@@ -278,11 +284,14 @@ jQuery(document).ready(function(){
             var isChecked = jQuery(this).attr("checked");
             if(isChecked === "checked"){
                 // if the current tip is checked
-                var val = jQuery(this).val();
-                uploadTipValue(val);
+                var tip = jQuery(this).val();
+                uploadTipValue(tip);
             }
-            
         });
+        jQuery("#value_deltip").keydown( _.debounce( function(e){
+            var tip = e.currentTarget.value;
+            setTipValue(tip);
+        },1000));
 });
 </script>    
 </div>
