@@ -240,46 +240,48 @@ border-radius: 5px;"
   <?php $sug4 = $woocommerce->cart->cart_contents_total * 0.20;?> 
   <div class="tip-radio-container">
     <p class="tip-message do-not-show"></p>
-    <input onclick="setTipValue(this.value)" type="radio" id="radio1" name="radios" value="<?php echo (number_format($sug1,2));?>">
+    <input class="tip-selection" checked="checked" onclick="setTipValue(this.value)" type="radio" id="radio1" name="radios" value="<?php echo (number_format($sug1,2));?>">
     <label for="radio1"><?php echo "10% ($".(number_format($sug1,2)).")";?></label>
-    <input onclick="setTipValue(this.value)" type="radio" id="radio2" name="radios" value="<?php echo (number_format($sug2,2));?>">
+    <input class="tip-selection" onclick="setTipValue(this.value)" type="radio" id="radio2" name="radios" value="<?php echo (number_format($sug2,2));?>">
     <label for="radio2"><?php echo "15% ($".(number_format($sug2,2)).")";?></label>
-    <input onclick="setTipValue(this.value)" type="radio" id="radio3" name="radios" value="<?php echo (number_format($sug3,2));?>">
+    <input class="tip-selection" onclick="setTipValue(this.value)" type="radio" id="radio3" name="radios" value="<?php echo (number_format($sug3,2));?>">
     <label for="radio3"><?php echo "18% ($".(number_format($sug3,2)).")";?></label>
-    <input onclick="setTipValue(this.value)" type="radio" id="radio4" name="radios" value="<?php echo (number_format($sug4,2));?>">
+    <input class="tip-selection" onclick="setTipValue(this.value)" type="radio" id="radio4" name="radios" value="<?php echo (number_format($sug4,2));?>">
     <label for="radio4"><?php echo "20% ($".(number_format($sug4,2)).")";?></label>
-    <div style="margin-top:10px;" class="tip-control">
-        <input style="line-height:1.5em;text-align: center;width:35%;display:inline-block" type="text" 
-        name="value_deltip" class="input-text-deltip" 
-        placeholder="<?php echo $options['tip_holder']; ?>" 
-        id="value_deltip" value="">
-        <a href="" class="button" id="submit_deltip"  ><?php echo $options['button'];?></a>
 
-    </div>
   </div>  
 <script>		
-function setTipValue(tipsug) {
-    document.getElementById("value_deltip").value = tipsug;
+function setTipValue(tip) {
+    jQuery(".spinner").show();
+    uploadTipValue(tip);
+    //document.getElementById("value_deltip").value = tipsug;
 }
+
+function uploadTipValue(tip){
+       jQuery.ajax({
+        url:woocommerce_params.ajax_url,
+        method:"POST",
+        dataType:"json",
+        data:{'tip':tip,'action':'add_tip_cost'},
+        success:function(data,status){
+            if(status==="success" && data.status===1){
+                jQuery("body").trigger("update_checkout");
+            }
+            jQuery(".spinner").hide();
+            jQuery("p.tip-message").html(data.message);
+        }
+    });
+}
+
 jQuery(document).ready(function(){
-        jQuery("#submit_deltip").click(function(e){
-            e.preventDefault();
-            jQuery(".spinner").show();
-            jQuery.ajax({
-                url:woocommerce_params.ajax_url,
-                method:"POST",
-                dataType:"json",
-                data:{'tip':jQuery("#value_deltip").val(),'action':'add_tip_cost'},
-                success:function(data,status){
-                    if(status==="success" && data.status===1){
-                        jQuery("body").trigger("update_checkout");
-                    }
-                    jQuery(".spinner").hide();
-
-                    jQuery("p.tip-message").html(data.message);
-                }
-            });
-
+        jQuery(".tip-selection").each(function(){
+            var isChecked = jQuery(this).attr("checked");
+            if(isChecked === "checked"){
+                // if the current tip is checked
+                var val = jQuery(this).val();
+                uploadTipValue(val);
+            }
+            
         });
 });
 </script>    
