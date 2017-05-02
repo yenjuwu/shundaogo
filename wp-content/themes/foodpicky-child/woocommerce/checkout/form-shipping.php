@@ -21,9 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
-<h3 class="accordion_head">Billing Address</h3>
-
-<div class="woocommerce-shipping-fields accordion_panel">
+<div class="woocommerce-shipping-fields">
 	<?php if ( true === WC()->cart->needs_shipping_address() ) : ?>
 
 		<h3 id="ship-to-different-address">
@@ -47,7 +45,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 
 	<?php endif; ?>
-    <button class="accordion_next_button">Next</button>
 </div>
 <div class="woocommerce-additional-fields">
 	<?php do_action( 'woocommerce_before_order_notes', $checkout ); ?>

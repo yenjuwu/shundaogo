@@ -292,13 +292,7 @@ jQuery(document).ready(function(){
 		//If delivery time is set in admin setting, then use the value. otherwise, use 60 minutes as default. 
 		
 		jQuery('#byconsolewooodt_checkout_field').prepend('<label for="delivery_datetime" class="">Delivery Time & Date <abbr class="required" title="required">*</abbr></label>');
-
-		if (jQuery('div').hasClass('woocommerce-shipping-fields')) {
-			document.getElementsByClassName("woocommerce-shipping-fields")[0].appendChild(document.getElementById("byconsolewooodt_checkout_field"));
-		}
-		if (jQuery('#byconsolewooodt_delivery_type_field').length) {
-			document.getElementById("byconsolewooodt_delivery_type_field").innerHTML = "";
-		}
+                
 		ByconsolewooodtDeliveryWidgetTimePopulate("#byconsolewooodt_delivery_date", "#byconsolewooodt_delivery_time"); 
 
 		jQuery("#byconsolewooodt_delivery_date").datepicker('setDate',new Date()); 
@@ -455,11 +449,10 @@ function byconsolewooodt_savefrontend_widget_data()
 
 add_action('init', 'byconsolewooodt_savefrontend_widget_data'); // Add the field to the checkout
 
-add_action('woocommerce_after_order_notes', 'byconsolewooodt_checkout_field');
+add_action('woocommerce_after_order_notes', 'byconsolewooodt_checkout_field',10,1);
 
 function byconsolewooodt_checkout_field($checkout)
 {
-    
     // get cookie as array
     
     $stripped_out_byconsolewooodt_delivery_widget_cookie = stripslashes($_COOKIE['byconsolewooodt_delivery_widget_cookie']);
@@ -467,32 +460,6 @@ function byconsolewooodt_checkout_field($checkout)
     $byconsolewooodt_delivery_widget_cookie_array = json_decode($stripped_out_byconsolewooodt_delivery_widget_cookie, true);
     
     echo '<div id="byconsolewooodt_checkout_field"><h2>' . get_option('byconsolewooodt_chekout_page_section_heading') . '</h2>';
-    
-    woocommerce_form_field('byconsolewooodt_delivery_type', array(
-        
-        'type' => 'radio',
-        
-        'class' => array(
-            'byconsolewooodt_delivery_type'
-        ),
-        
-        'label' => get_option('byconsolewooodt_chekout_page_order_type_lebel'),
-        
-        'placeholder' => __('Select delivery type', 'byconsole-woo-order-delivery-time'),
-        
-        'default' => $byconsolewooodt_delivery_widget_cookie_array['byconsolewooodt_widget_type_field'],
-        
-        'checked' => 'checked',
-        
-        'options' => array(
-            
-            'take_away' => 'Take away',
-            
-            'levering' => 'Delivery'
-            
-        )
-        
-    ), $checkout->get_value('byconsolewooodt_delivery_type'));
     
     woocommerce_form_field('byconsolewooodt_delivery_date', array(
         

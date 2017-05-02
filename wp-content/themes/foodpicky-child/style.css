@@ -170,7 +170,7 @@ div.alert-info{
         content: "\2212";
     }
     .checkout.woocommerce-checkout .accordion_panel.active{
-         max-height:500px;
+         max-height:1000px;
     }
     .checkout.woocommerce-checkout .accordion_panel {
         -moz-transition: max-height 2s;

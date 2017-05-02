@@ -6,21 +6,6 @@
         //var regex = /(\d+) ((\w+[ ,])+ ){2}([a-zA-Z]){2} (\d){5}/;
         jQuery('input#delivery_address').focus(geolocate);
     }
-    /*
-    jQuery('input#delivery_address').keydown( _.debounce( function(e){
-        var address = e.currentTarget.value;
-        if((currentMatch = regex.exec(address)) !==null && currentMatch.length>0 ){
-            // find a way to return vendor address
-            jQuery(this).removeClass("error").addClass("success");
-            addDeliveryChargeProcessing();
-            var vendorAddress=jQuery('input#vendor_address').val();
-            getDistanceMatrix(address,vendorAddress);
-        }else{
-            jQuery("div#message-container").text("* 格式为：number(空格)street(,)(空格)city(,)(空格) GA(空格)zipcode");
-            jQuery(this).removeClass("success").addClass("error");
-        }
-    }, 800 ) );
-    */
     jQuery('input#delivery_address').bind("paste",function(e){
         var address = e.originalEvent.clipboardData.getData('text');
         var vendorAddress=jQuery('input#vendor_address').val();
