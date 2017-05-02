@@ -981,7 +981,12 @@ function ByconsolewooodtDeliveryWidgetTimePopulate(date_field_identifier,time_fi
  		alert('You have bug in this version of plugin, please update the plugin');
  	}
 
-
+    var ByConsoleTimeFormat="<?php
+			echo get_option('byconsolewooodt_hours_format');
+	?>"; 
+    
+	ByConsoleTimeFormat = ByConsoleTimeFormat && ByConsoleTimeFormat.length>0?
+		ByConsoleTimeFormat: 'h:i a';  
 
 	<?php 
     	if ($byconsolewooodt_delivery_widget_cookie_array['byconsolewooodt_widget_type_field'] == 'levering') {
@@ -1017,15 +1022,16 @@ function ByconsolewooodtDeliveryWidgetTimePopulate(date_field_identifier,time_fi
 
 		"selectOnBlur": "true",
 
-		"timeFormat": "<?php echo get_option('byconsolewooodt_hours_format'); ?>"
+		"timeFormat": ByConsoleTimeFormat
 
 	});
+    
+    
 	<?php
     	} 
 		// lock the time selection based on admin settings for pickup time
 		if ($byconsolewooodt_delivery_widget_cookie_array['byconsolewooodt_widget_type_field'] == 'take_away') {
-	?>
-
+	?> 
 	jQuery(time_field_identifier).timepicker({
 
 		"minTime": start_time_updated_as_per_selected_date,
@@ -1042,14 +1048,14 @@ function ByconsolewooodtDeliveryWidgetTimePopulate(date_field_identifier,time_fi
 
 		"selectOnBlur": "true",
 
-		"timeFormat": "<?php echo get_option('byconsolewooodt_hours_format'); ?>"
+		"timeFormat": ByConsoleTimeFormat
 
 	});
 	<?php
     	} 
 		// if no delivery type is not selected then show all times 
 		if ($byconsolewooodt_delivery_widget_cookie_array['byconsolewooodt_widget_type_field'] == '') {
-	?>
+	?> 
 	jQuery(time_field_identifier).timepicker({
 
 		"disableTextInput": "true",
@@ -1062,7 +1068,7 @@ function ByconsolewooodtDeliveryWidgetTimePopulate(date_field_identifier,time_fi
 
 		"selectOnBlur": "true",
 
-		"timeFormat": "<?php echo get_option('byconsolewooodt_hours_format'); ?>"
+		"timeFormat": ByConsoleTimeFormat
 
 	});
 	<?php
