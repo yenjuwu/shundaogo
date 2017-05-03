@@ -111,7 +111,21 @@
         }); 
         
     })();
+    //Init popup dialog for products 
+    (function(){
+        jQuery('.entry .entry-thumbnail a').click(function(event){
+            var self = jQuery(this);
+            var url = self.attr("href");
+            jQuery.ajax({
+                url: url
+            }).done(function(content) {
+                jQuery.fancybox.open(jQuery(content).find('.product-main').html());
+                console.log(jQuery(content).find('.product-main').html());
+            });
 
+            event.preventDefault();
+        });
+    })();
 });
 function removeAllVisualStatus(){
     jQuery('input#delivery_address').removeClass("success").removeClass("error");
