@@ -112,6 +112,44 @@
         
     })();
 
+    //Add popup button to
+    (function(){
+        jQuery('.entry .entry-thumbnail a').click(function(event){
+            //if screen size is too small, then redirect client to product page
+            //otherwise show a popup
+            if (jQuery(window).width()<769){
+                return;
+            }
+            var self = jQuery(this);
+            var url = self.attr("href");
+            jQuery.ajax({
+                url: url
+            }).done(function(content) {
+                var product_content=jQuery(content);
+                //product template uses div as image container and loads it using unknow js library
+                //solution for it is to replace it with img tag
+                var image_div=product_content.find('.product-main').find('div.image.lazy.zoom');
+                var attrs = { };
+                jQuery.each(image_div[0].attributes, function(idx, attr) {
+                    attrs[attr.nodeName] = attr.nodeValue;
+                });
+
+                attrs["src"]=attrs["data-src"];
+                image_div.replaceWith(function () {
+                    return jQuery("<img />", attrs).append(jQuery(this).contents());
+                }); 
+                jQuery.fancybox.open(product_content.find('.product-main').html()); 
+                if(jQuery('.is-open').length){ 
+                    if(jQuery('.is-open')[0].textContent === "Closed"){
+                        jQuery('.single_add_to_cart_button').prop('disabled',true);
+                        jQuery('.single_add_to_cart_button').text('Closed');
+                   }
+                }
+            });
+
+            event.preventDefault();
+        });
+    })();
 });
 function removeAllVisualStatus(){
     jQuery('input#delivery_address').removeClass("success").removeClass("error");
