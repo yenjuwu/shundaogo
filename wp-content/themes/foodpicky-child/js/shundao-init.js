@@ -114,7 +114,7 @@
 
     //Add popup button to
     (function(){
-        jQuery('.entry .entry-thumbnail a').click(function(event){
+        jQuery('.profile-products.product .entry .entry-thumbnail a').click(function(event){
             //if screen size is too small, then redirect client to product page
             //otherwise show a popup
             if (jQuery(window).width()<769){
