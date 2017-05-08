@@ -953,7 +953,7 @@ function ByconsolewooodtDeliveryWidgetTimePopulate(date_field_identifier,time_fi
 	?>"; 
     
 	ByConsoleTimeFormat = ByConsoleTimeFormat && ByConsoleTimeFormat.length>0?
-		ByConsoleTimeFormat: 'h:i a';  
+		ByConsoleTimeFormat: 'h:ia';  
 
 	<?php 
     	if ($byconsolewooodt_delivery_widget_cookie_array['byconsolewooodt_widget_type_field'] == 'levering') {
@@ -991,8 +991,7 @@ function ByconsolewooodtDeliveryWidgetTimePopulate(date_field_identifier,time_fi
 
 		"timeFormat": ByConsoleTimeFormat
 
-	});
-    
+	}); 
     
 	<?php
     	} 
@@ -1041,6 +1040,7 @@ function ByconsolewooodtDeliveryWidgetTimePopulate(date_field_identifier,time_fi
 	<?php
 		}
 	?>
+    jQuery(time_field_identifier)[0].value=start_time_updated_as_per_selected_date; 
 } // End of function ByconsolewooodtDeliveryWidgetTimePopulate
 
 </script>
