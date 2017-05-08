@@ -284,9 +284,8 @@ jQuery(document).ready(function(){
 		jQuery("input#byconsolewooodt_delivery_time").val("<?php
 			echo $byconsolewooodt_delivery_widget_cookie_array['byconsolewooodt_widget_time_field'];
 	?>");
-
-
-	jQuery("#byconsolewooodt_delivery_date").datepicker('setDate',new Date()); 
+ 
+      
 	
 	if(true ||  ((window.location.pathname).indexOf("cart") > 0) || ((window.location.pathname).indexOf("checkout") > 0)){
 		//If delivery time is set in admin setting, then use the value. otherwise, use 60 minutes as default. 
@@ -297,6 +296,16 @@ jQuery(document).ready(function(){
 
 		jQuery("#byconsolewooodt_delivery_date").datepicker('setDate',new Date()); 
 	}
+
+    var now = new Date();
+	var curtime= now.toLocaleTimeString("en-US", { hour12: false, hour: "numeric", minute: "numeric"});
+    
+    if(ByConsoleTimeStringToMinites(curtime) > ByConsoleTimeStringToMinites(delivery_ending_time)){
+        jQuery("#byconsolewooodt_delivery_date").datepicker('setDate',new Date(now.getTime()+ 24 *60 *60 *1000) );
+    }else{
+        jQuery("#byconsolewooodt_delivery_date").datepicker('setDate',now ); 
+    } 
+
 	////////////////////////////////////////////////////
 
 	jQuery('input[name="byconsolewooodt_delivery_type"]').on('click', function () {
@@ -862,7 +871,30 @@ function ByConsoleWooODTStartTimeByInterval(cur_hour,cur_minute){
 	return start_time_updated;
 } // end of ByConsoleWooODTtimeInterval
 
+function ByConsoleTimeStringToMinites(timestr){
+    var regex_12_hour = /\s*(\d+):(\d+)\s*(am|pm)/i;
+    var regex_24_hour = /\s*(\d+):(\d+)\s*/i;
+    var result;
+    if(result=regex_12_hour.exec(timestr)){
+        if(result[3]=='am' || result[3]=='AM'){
+            if(result[1]==12){
+                return 0;
+            }else{
+                return parseInt(result[1])*60 + parseInt(result[2]);
+            }
+        }else{
+            if(result[1]==12){
+                return 12 * 60 + parseInt(result[2]);
+            }else{
+                return (12+parseInt(result[1])) * 60 + parseInt(result[2]);
+            }
+        }
+    }else if(result = regex_24_hour.exec(timestr)){
+        return parseInt(result[1]) *60 + parseInt(result[2]);
+    }
 
+    return 0;
+}
 
 function ByconsolewooodtDeliveryWidgetTimePopulate(date_field_identifier,time_field_identifier){ 
 
@@ -924,20 +956,21 @@ function ByconsolewooodtDeliveryWidgetTimePopulate(date_field_identifier,time_fi
     		if ($byconsolewooodt_delivery_widget_cookie_array['byconsolewooodt_widget_type_field'] == 'take_away') {
 		?>
  				//alert(curtime +"||"+ pickup_opening_time);
- 				if(curtime <= pickup_opening_time){
+ 				if(ByConsoleTimeStringToMinites(curtime) <= ByConsoleTimeStringToMinites(pickup_opening_time)){
  					start_time_updated_as_per_selected_date = pickup_opening_time;
  				}
- 				if(curtime > pickup_opening_time){
+ 				if(ByConsoleTimeStringToMinites(curtime) > ByConsoleTimeStringToMinites(pickup_opening_time)){
  					start_time_updated_as_per_selected_date = ByConsoleWooODTStartTimeByInterval(parseInt(cur_hour),cur_minute); // check this function in wp_footer
  				}
  		<?php
     		}
     		if ($byconsolewooodt_delivery_widget_cookie_array['byconsolewooodt_widget_type_field'] == 'levering') {
 		?>
- 				if(curtime <= delivery_opening_time){
+
+ 				if(ByConsoleTimeStringToMinites(curtime) <= ByConsoleTimeStringToMinites(delivery_opening_time )){
  					start_time_updated_as_per_selected_date = delivery_opening_time;
  				}
- 				if(curtime > delivery_opening_time){
+ 				if(ByConsoleTimeStringToMinites(curtime)  > ByConsoleTimeStringToMinites(delivery_opening_time )){
  					start_time_updated_as_per_selected_date = ByConsoleWooODTStartTimeByInterval(parseInt(cur_hour),cur_minute); // check this function in wp_footer
  				}
  		<?php
