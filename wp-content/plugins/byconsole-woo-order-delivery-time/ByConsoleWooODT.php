@@ -287,24 +287,25 @@ jQuery(document).ready(function(){
  
       
 	
-	if(true ||  ((window.location.pathname).indexOf("cart") > 0) || ((window.location.pathname).indexOf("checkout") > 0)){
+	if(((window.location.pathname).indexOf("cart") > 0) || ((window.location.pathname).indexOf("checkout") > 0)){
 		//If delivery time is set in admin setting, then use the value. otherwise, use 60 minutes as default. 
 		
 		jQuery('#byconsolewooodt_checkout_field').prepend('<label for="delivery_datetime" class="">Delivery Time & Date <abbr class="required" title="required">*</abbr></label>');
                 
-		ByconsolewooodtDeliveryWidgetTimePopulate("#byconsolewooodt_delivery_date", "#byconsolewooodt_delivery_time"); 
+		
 
-		jQuery("#byconsolewooodt_delivery_date").datepicker('setDate',new Date()); 
+        var now = new Date();
+        var curtime= now.toLocaleTimeString("en-US", { hour12: false, hour: "numeric", minute: "numeric"});
+        var t1 =ByConsoleTimeStringToMinites(curtime);
+        var t2 = ByConsoleTimeStringToMinites(delivery_ending_time);
+        if(ByConsoleTimeStringToMinites(curtime) +byconsolewooodt_delivery_times> ByConsoleTimeStringToMinites(delivery_ending_time)){
+            jQuery("#byconsolewooodt_delivery_date").datepicker('setDate',new Date(now.getTime()+ 24 *60 *60 *1000) );
+        }else{
+            jQuery("#byconsolewooodt_delivery_date").datepicker('setDate',now ); 
+        } 
+        ByconsolewooodtDeliveryWidgetTimePopulate("#byconsolewooodt_delivery_date", "#byconsolewooodt_delivery_time"); 
 	}
-
-    var now = new Date();
-	var curtime= now.toLocaleTimeString("en-US", { hour12: false, hour: "numeric", minute: "numeric"});
-    
-    if(ByConsoleTimeStringToMinites(curtime) > ByConsoleTimeStringToMinites(delivery_ending_time)){
-        jQuery("#byconsolewooodt_delivery_date").datepicker('setDate',new Date(now.getTime()+ 24 *60 *60 *1000) );
-    }else{
-        jQuery("#byconsolewooodt_delivery_date").datepicker('setDate',now ); 
-    } 
+ 
 
 	////////////////////////////////////////////////////
 
