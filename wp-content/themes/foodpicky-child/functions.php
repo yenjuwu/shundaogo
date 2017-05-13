@@ -1,7 +1,7 @@
 <?php
 /**
  * Shundao functions and definitions.
- */
+ */ 
 function my_theme_enqueue_styles() {
     $parent_style = 'parent-style';
     wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
@@ -20,7 +20,7 @@ function my_theme_enqueue_styles() {
     wp_enqueue_script('sd-google-autocomplete', get_stylesheet_directory_uri().'/js/google-autocomplete.js');
     wp_enqueue_script('sd-init', get_stylesheet_directory_uri().'/js/shundao-init.js');
     wp_enqueue_script('sd-fancybox', get_stylesheet_directory_uri().'/js/jquery.fancybox.js');
-
+    wp_enqueue_script('azexo-fontend', get_stylesheet_directory_uri() . '/js/fontend.js', array('jquery'), AZEXO_FRAMEWORK_VERSION, true);
 }
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
 
