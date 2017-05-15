@@ -190,25 +190,25 @@ jQuery(document).ready(function(){
 	delivery_opening_time="<?php
 			echo get_option('byconsolewooodt_delivery_hours_from');
 	?>"; 
-	delivery_opening_time = delivery_opening_time.length>0 && delivery_opening_time.match(/^\d+/)?
-		delivery_opening_time.match(/^\d+/)[0]: '11:00am'; 
+	delivery_opening_time = delivery_opening_time.match(/\s*(\d+):(\d+)\s*/i) || delivery_opening_time.match(/\s*(\d+):(\d+)\s*(am|pm)/i)?
+		delivery_opening_time: '11:00am'; 
 
 	pickup_opening_time="<?php
 			echo get_option('byconsolewooodt_opening_hours_from');
 	?>";
-	pickup_opening_time = pickup_opening_time.length>0 && pickup_opening_time.match(/^\d+/)?
-		pickup_opening_time.match(/^\d+/)[0]: '11:00am'; 
+	pickup_opening_time = pickup_opening_time.match(/\s*(\d+):(\d+)\s*/i) || pickup_opening_time.match(/\s*(\d+):(\d+)\s*(am|pm)/i)?
+		pickup_opening_time: '11:00am'; 
 	delivery_ending_time="<?php
 			echo get_option('byconsolewooodt_delivery_hours_to');
 	?>";
-	delivery_ending_time = delivery_ending_time.length>0 && delivery_ending_time.match(/^\d+/)?
-		delivery_ending_time.match(/^\d+/)[0]: '11:00pm'; 
+	delivery_ending_time = delivery_ending_time.match(/\s*(\d+):(\d+)\s*/i) || delivery_ending_time.match(/\s*(\d+):(\d+)\s*(am|pm)/i)?
+		delivery_ending_time: '11:00pm'; 
 	pickup_ending_time="<?php
 			echo get_option('byconsolewooodt_opening_hours_to');
 	?>";
 
-	pickup_ending_time = pickup_ending_time.length>0 && pickup_ending_time.match(/^\d+/)?
-		pickup_ending_time.match(/^\d+/)[0]: '11:00pm'; 
+	pickup_ending_time = pickup_ending_time.match(/\s*(\d+):(\d+)\s*/i) || pickup_ending_time.match(/\s*(\d+):(\d+)\s*(am|pm)/i)?
+		pickup_ending_time: '11:00pm'; 
 
 	byconsolewooodt_delivery_times ="<?php
 			echo get_option('byconsolewooodt_delivery_times');
