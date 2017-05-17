@@ -539,8 +539,8 @@
                 $(this).closest('.list-filter').find('.filter-term').removeClass('active');
                 $(this).addClass('active');
                 if ($(this).data('term')) {
-                    $(this).data('posts-list-wrapper').find('> .posts-list .filterable.' + $(this).data('term')).addClass('showed');
-                    $(this).data('posts-list-wrapper').find('> .posts-list .filterable:not(.' + $(this).data('term') + ')').removeClass('showed');
+                    $(this).data('posts-list-wrapper').find('> .posts-list .filterable[class*="' + $(this).data('term') + '"]').addClass('showed');
+                    $(this).data('posts-list-wrapper').find('> .posts-list .filterable:not([class*="' + $(this).data('term') + '"])').removeClass('showed');
                 } else {
                     $(this).data('posts-list-wrapper').find('> .posts-list .filterable').addClass('showed');
                 }
