@@ -16534,8 +16534,8 @@ table.shop_table tfoot tr.order-total .amount {
 }
 @font-face {
   font-family: 'WooCommerce';
-  src: url('http://azexo.com/foodpicky/wp-content/themes/foodpicky/fonts/WooCommerce.eot');
-  src: url('http://azexo.com/foodpicky/wp-content/themes/foodpicky/fonts/WooCommerce.eot?#iefix') format('embedded-opentype'), url('http://azexo.com/foodpicky/wp-content/themes/foodpicky/fonts/WooCommerce.woff') format('woff'), url('http://azexo.com/foodpicky/wp-content/themes/foodpicky/fonts/WooCommerce.ttf') format('truetype'), url('http://azexo.com/foodpicky/wp-content/themes/foodpicky/fonts/WooCommerce.svg#WooCommerce') format('svg');
+  src: url('/wp-content/themes/foodpicky/fonts/WooCommerce.eot');
+  src: url('/wp-content/themes/foodpicky/fonts/WooCommerce.eot?#iefix') format('embedded-opentype'), url('/wp-content/themes/foodpicky/fonts/WooCommerce.woff') format('woff'), url('/wp-content/themes/foodpicky/fonts/WooCommerce.ttf') format('truetype'), url('/wp-content/themes/foodpicky/fonts/WooCommerce.svg#WooCommerce') format('svg');
   font-weight: normal;
   font-style: normal;
 }
