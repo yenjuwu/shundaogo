@@ -277,6 +277,7 @@ jQuery(document).ready(function(){
 			}
 	?>
 
+
 		jQuery("input#byconsolewooodt_delivery_date").val("<?php
 			echo $byconsolewooodt_delivery_widget_cookie_array['byconsolewooodt_widget_date_field'];
 	?>");
@@ -302,8 +303,9 @@ jQuery(document).ready(function(){
             jQuery("#byconsolewooodt_delivery_date").datepicker('setDate',new Date(now.getTime()+ 24 *60 *60 *1000) );
         }else{
             jQuery("#byconsolewooodt_delivery_date").datepicker('setDate',now ); 
-        } 
-        ByconsolewooodtDeliveryWidgetTimePopulate("#byconsolewooodt_delivery_date", "#byconsolewooodt_delivery_time"); 
+        }  
+        if(jQuery("#byconsolewooodt_delivery_date").length && jQuery("#byconsolewooodt_delivery_time").length)
+            ByconsolewooodtDeliveryWidgetTimePopulate("#byconsolewooodt_delivery_date", "#byconsolewooodt_delivery_time"); 
 	}
  
 
