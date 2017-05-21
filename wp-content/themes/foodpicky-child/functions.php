@@ -35,7 +35,7 @@ add_action('wp_ajax_add_tip_cost','add_tip',10);
 function add_tip(){
     $cost = filter_input(INPUT_POST,'tip',FILTER_VALIDATE_FLOAT);
     $tip = floatval($cost);
-    if($tip>=0.0){
+    if(is_numeric($tip) && $tip>=0){
         session_start();
         $_SESSION['tip_cost']=$tip;
         echo json_encode(array("status"=>1,"message"=>__("Tip has been added","shundao")));
