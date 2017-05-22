@@ -216,7 +216,7 @@ jQuery(document).ready(function(){
 
 	byconsolewooodt_delivery_times = byconsolewooodt_delivery_times && byconsolewooodt_delivery_times.match(/^\d+/)? 
 				byconsolewooodt_delivery_times.match(/^\d+/)[0]:60;
-
+    byconsolewooodt_delivery_times = parseInt(byconsolewooodt_delivery_times);
 	byconsolewooodt_hours_format ="<?php
 			echo get_option('byconsolewooodt_hours_format');
 	?>";
